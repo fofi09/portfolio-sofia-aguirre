@@ -22,47 +22,45 @@ nav a {
     text-decoration: none; /* ¡Chau, subrayado! */
     color: #333; /* Un color oscuro para que se lea bien */
 }
-/**/
+/*hero*/
 .seccion-hero {
-    display: flex; /* ¡Lo convierte en contenedor flexible! */
+    display: flex; 
     justify-content: center; 
     align-items: center;  
-    padding: 50px 0; /* Un poco de aire para que no se pegue al header */
-    gap: 50px; /*espacio entre texto e imagen en hero, ajustado si necesitas*/
+    padding: 50px 0; 
+    gap: 50px; 
 }
 .contenido-hero {
     display: flex;
-    flex-direction: column; /* Apila los elementos de arriba para abajo */
-    gap: 15px; /* Un poco de separación entre cada elemento (el span, h1, p...) */
+    flex-direction: column; 
+    gap: 15px; 
 }
 .contenido-hero h1 {
-    font-size: 4rem; /* ¡Letra bien grande! */
-    margin: 0; /* Quita el margen por defecto del h1 */
+    font-size: 4rem; 
+    margin: 0; 
 }
 
 .contenido-hero p {
     font-size: 1.2rem;
-    max-width: 500px; /* Para que la línea de texto no sea tan larga */
+    max-width: 500px; 
 }
 
 .botones {
     display: flex;
-    gap: 10px; /* Separa los dos botones */
+    gap: 10px; /* separa los dos botnes */
 }
 .imagen-hero {
-    /* Le damos un tamaño fijo a la caja que contiene la imagen */
     width: 300px;
     height: 300px;
-    border: 5px solid #fff; /* El borde blanco para que se vea como en la imagen */
-    border-radius: 50%; /* Esto es lo que la hace redonda */
-    overflow: hidden; /* Oculta cualquier parte de la imagen que se salga de la caja */
+    border: 5px solid #fff; 
+    border-radius: 50%; 
+    overflow: hidden; 
 }
 
 .imagen-hero img {
-    /* Hacemos que la imagen se ajuste perfectamente dentro de su contenedor */
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Esto es la clave para que la imagen cubra todo el espacio sin deformarse */
+    object-fit: cover; 
 }
 /*  */
 .seccion-proyectos h2 {
@@ -71,29 +69,126 @@ nav a {
     margin-bottom: 40px; /* Para separarlo de las tarjetas */
 }
 .contenedor-tarjetas {
-    display: flex; /* Esto hace que las tarjetas se pongan en fila */
-    justify-content: center; /* Centra las tarjetas si no llenan todo el espacio */
+    display: flex; 
+    justify-content: center; 
     gap: 30px; /* Separación entre cada tarjeta */
     max-width: 1200px; 
     margin: 0 auto; 
 }
-/* .tarjeta-proyecto {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    flex-basis: 300px; 
-} */
+
  .tarjeta-proyecto {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    flex-basis: 260px; /* esto alinea*/
+    flex-basis: 255px; /* esto alinea*/
 }
 .imagen-proyecto img {
     width: 100%;
-    height: auto; /* Esto mantiene la proporción de la imagen, para que no se deforme */
-    display: block; /* Para quitar cualquier espacio extra que pueda aparecer */
-    border-radius: 5px; /* Le da un poco de estilo, como en la imagen original */
+    height: auto; 
+    display: block; 
+    border-radius: 5px; 
+}
+
+/*  experiencia*/
+/*  */
+
+.seccion-experiencia h2 {
+    font-size: 2.5rem;
+    margin-top: 40px; 
+    margin-bottom: 20px; 
+}
+
+
+.contenedor-experiencias {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.experiencia {
+    display: flex;
+    gap: 50px;
+    margin-bottom: 30px;
+}
+
+
+.empresa-info {
+    flex-basis: 200px;
+    flex-shrink: 0; 
+}
+
+
+.empresa-info h3 {
+    font-size: 1.5rem;
+    font-weight: normal;
+    margin: 0;
+}
+
+
+.detalles-trabajo ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+.detalles-trabajo li {
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 20px;
+}
+
+
+.detalles-trabajo li::before {
+    content: '✔';
+    color: #6c63ff;
+    position: absolute;
+    left: 0;
+    top: 2px;
+}
+/* sobre mi */
+
+.seccion-sobremi {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    gap: 50px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.contenido-sobremi {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 500px;
+}
+
+.contenido-sobremi span {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.contenido-sobremi h2 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+.contenido-sobremi p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+.imagen-sobremi {
+    max-width: 450px;
+    flex-shrink: 0;
+}
+
+.imagen-sobremi img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
 }

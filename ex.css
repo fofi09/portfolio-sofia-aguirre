@@ -1,0 +1,111 @@
+.seccion-experiencia h2 {
+    font-size: 2.5rem;
+    margin-top: 40px; /* Separación con la sección de arriba */
+    margin-bottom: 20px; /* Separación con la información de la experiencia */
+}
+
+/* Contenedor de las experiencias (Apple, Microsoft, etc.) */
+.contenedor-experiencias {
+    /* Le damos un ancho máximo al contenedor de las experiencias */
+    max-width: 900px; 
+    /* Y lo centramos, esto es clave para que quede alineado con el resto */
+    margin: 0 auto;
+}
+
+/* Contenedor de cada experiencia individual */
+.experiencia {
+    display: flex;
+    gap: 50px;
+    margin-bottom: 30px;
+}
+
+/* Contenedor del nombre de la empresa y el cargo */
+.empresa-info {
+    flex-basis: 200px;
+    flex-shrink: 0; 
+}
+
+/* Estilo del nombre de la empresa */
+.empresa-info h3 {
+    font-size: 1.5rem;
+    font-weight: normal;
+    margin: 0;
+}
+
+/* Estilo de la lista de detalles */
+.detalles-trabajo ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Estilo de cada ítem de la lista */
+.detalles-trabajo li {
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 20px;
+}
+
+/* El ícono de check con pseudo-elemento */
+.detalles-trabajo li::before {
+    content: '✔';
+    color: #6c63ff;
+    position: absolute;
+    left: 0;
+    top: 2px;
+}
+
+
+
+
+
+
+
+
+
+/* sobre mi */
+.seccion-sobremi {
+    /* Flexbox para alinear el texto y la imagen uno al lado del otro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding-top: 50px; /* Separación con la sección de arriba */
+    padding-bottom: 50px;
+}
+
+.contenido-sobremi {
+    /* Le damos un ancho máximo para que el texto no se estire demasiado */
+    max-width: 500px;
+    /* Usamos Flexbox para apilar los elementos de texto */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contenido-sobremi span {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.contenido-sobremi h2 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+.contenido-sobremi p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+.imagen-sobremi {
+    /* Le damos un ancho máximo para que no desborde */
+    max-width: 450px;
+}
+
+.imagen-sobremi img {
+    /* La imagen se ajusta al 100% de su contenedor */
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
