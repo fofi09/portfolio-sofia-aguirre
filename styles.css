@@ -1,0 +1,99 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.contenedor {
+     max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    padding: 20px 0; 
+}
+nav {
+    display: flex;
+    gap: 20px; /* Esto es como un "margin" pero para Flexbox. ¡Genial para separar! */
+}
+nav a {
+    text-decoration: none; /* ¡Chau, subrayado! */
+    color: #333; /* Un color oscuro para que se lea bien */
+}
+/**/
+.seccion-hero {
+    display: flex; /* ¡Lo convierte en contenedor flexible! */
+    justify-content: center; 
+    align-items: center;  
+    padding: 50px 0; /* Un poco de aire para que no se pegue al header */
+    gap: 50px; /*espacio entre texto e imagen en hero, ajustado si necesitas*/
+}
+.contenido-hero {
+    display: flex;
+    flex-direction: column; /* Apila los elementos de arriba para abajo */
+    gap: 15px; /* Un poco de separación entre cada elemento (el span, h1, p...) */
+}
+.contenido-hero h1 {
+    font-size: 4rem; /* ¡Letra bien grande! */
+    margin: 0; /* Quita el margen por defecto del h1 */
+}
+
+.contenido-hero p {
+    font-size: 1.2rem;
+    max-width: 500px; /* Para que la línea de texto no sea tan larga */
+}
+
+.botones {
+    display: flex;
+    gap: 10px; /* Separa los dos botones */
+}
+.imagen-hero {
+    /* Le damos un tamaño fijo a la caja que contiene la imagen */
+    width: 300px;
+    height: 300px;
+    border: 5px solid #fff; /* El borde blanco para que se vea como en la imagen */
+    border-radius: 50%; /* Esto es lo que la hace redonda */
+    overflow: hidden; /* Oculta cualquier parte de la imagen que se salga de la caja */
+}
+
+.imagen-hero img {
+    /* Hacemos que la imagen se ajuste perfectamente dentro de su contenedor */
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Esto es la clave para que la imagen cubra todo el espacio sin deformarse */
+}
+/*  */
+.seccion-proyectos h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 40px; /* Para separarlo de las tarjetas */
+}
+.contenedor-tarjetas {
+    display: flex; /* Esto hace que las tarjetas se pongan en fila */
+    justify-content: center; /* Centra las tarjetas si no llenan todo el espacio */
+    gap: 30px; /* Separación entre cada tarjeta */
+    max-width: 1200px; 
+    margin: 0 auto; 
+}
+/* .tarjeta-proyecto {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    flex-basis: 300px; 
+} */
+ .tarjeta-proyecto {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    flex-basis: 260px; /* esto alinea*/
+}
+.imagen-proyecto img {
+    width: 100%;
+    height: auto; /* Esto mantiene la proporción de la imagen, para que no se deforme */
+    display: block; /* Para quitar cualquier espacio extra que pueda aparecer */
+    border-radius: 5px; /* Le da un poco de estilo, como en la imagen original */
+}
