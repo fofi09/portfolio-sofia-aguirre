@@ -260,15 +260,25 @@ footer {
 /* Este es el contenedor clave que alinea el contenido.
    Lo ajustamos para que se comporte como el .contenedor principal. */
 .contenedor-footer {
-    max-width: 1200px; /* Usamos el mismo max-width que en .contenedor */
+    max-width: 1200px; 
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     gap: 100px;
-    padding: 0 135px; /* Mantiene el padding para la alineación */
+    padding: 0 135px;
 }
-
+ /* el contenedor footer de abajo es para poner los iconos en el medio medio */
+/* .contenedor-footer {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+  
+    align-items: center; 
+    gap: 100px;
+    padding: 0 135px;
+} */
 /* El menú vertical no necesita ajustes de padding o margin,
    ya que el contenedor padre (.contenedor-footer) se encarga de la alineación. */
 .footer-nav-vertical {
@@ -347,6 +357,6 @@ flex-wrap: wrap;
 
 .contenedor-iconos img {
 width: 30px; 
-height: 30px;
+height: 25px;
 margin-bottom: 10px; 
 }
