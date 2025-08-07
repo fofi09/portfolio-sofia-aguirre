@@ -253,66 +253,6 @@ nav a {
 }
 
 /* footer */
-/* footer {
-    padding: 50px 0;
-}
-
-
-    align-items: flex-start;
-    gap: 100px;
-    padding: 0;
-}
-
-.footer-nav-vertical {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.footer-nav-vertical a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-}
-
-.formulario-contacto {
-    max-width: 300px;
-}
-
-.formulario-contacto h4 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-}
-
-.formulario-contacto input,
-.formulario-contacto textarea {
-    display: block;
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.formulario-contacto textarea {
-    resize: vertical;
-}
-
-.formulario-contacto .boton-primario {
-    background-color: #6c63ff;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-} */
-
-
-
-
-
-/* Esto asegura que el footer ocupa todo el ancho de la página,
-   no solo hasta los 900px */
 footer {
     padding: 50px 0;
 }
@@ -374,4 +314,39 @@ footer {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+/* Nuevo estilo para la sección de tecnologías en el footer */
+.footer-tecnologias {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espacio entre el título y los iconos */
+}
+
+.footer-tecnologias h4 {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+/* .contenedor-iconos {
+    display: flex; 
+    gap: 15px; 
+}
+
+.contenedor-iconos img {
+    width: 30px; 
+    height: 30px;
+} */
+
+.contenedor-iconos {
+display: flex; 
+gap: 15px; 
+max-width: 150px; 
+flex-wrap: wrap; 
+}
+
+.contenedor-iconos img {
+width: 30px; 
+height: 30px;
+margin-bottom: 10px; 
 }
