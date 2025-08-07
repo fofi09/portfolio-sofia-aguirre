@@ -5,97 +5,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>portfolio</title>
     <link rel="stylesheet" href="styles.css">
+     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
     
  <div class="contenedor">
-    <header>
-        <div class="logo">
-            <span>LucaSdz.</span>
-        </div>
-        <nav>
-            <a href="#">Servicios</a>
-            <a href="#">Contacto</a>
-            <a href="#">sobre mi</a>
-        </nav>
-        <div class="perfil">
-            </div>
-    </header>
+
+    <header class="flex justify-between items-center py-5 
+  flex-col sm:flex-col md:flex-row lg:flex-row xl:flex-row">
+  <div class="logo mb-4 md:mb-0">
+    <span class="text-xl font-bold">LucaSdz.</span>
+  </div>
+  <nav class="flex gap-5 flex-wrap justify-center md:justify-end">
+    <a href="#" class="text-gray-800">Servicios</a>
+    <a href="#" class="text-gray-800">Contacto</a>
+    <a href="#" class="text-gray-800">Sobre mí</a>
+  </nav>
+  <div class="perfil hidden md:block"></div>
+</header>
+
     <!--  -->
-     <section class="seccion-hero">
-        <div class="contenido-hero">
-            <span>Hey, I'm Luca 👋</span>
-            <h1>Frontend Developer</h1>
-            <p>I'm a frontend developer based in Italy. I'll help you build beautiful websites your users will love.</p>
-            <div class="botones">
-                <a href="#" class="boton-primario">Get In Touch</a>
-                <a href="#" class="boton-secundario">Browse Projects</a>
-            </div>
-        </div>
-        <div class="imagen-hero">
-            <img src="imagenes/pexels-jessbaileydesign-1018133.jpg" alt="Foto de Luca, un desarrollador frontend">
-        </div>
-    </section>
+ 
+        
+    <section class="seccion-hero flex justify-center items-center py-[50px] gap-[50px] 
+  flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row text-center md:text-left">
+  <div class="contenido-hero flex flex-col gap-[15px] items-center md:items-start">
+    <span class="text-lg">Hey, I'm Luca 👋</span>
+    <h1 class="text-[2.5rem] md:text-[4rem]">Frontend Developer</h1>
+    <p class="text-base md:text-lg max-w-[500px]">I'm a frontend developer based in Italy. I'll help you build beautiful websites your users will love.</p>
+    <div class="botones flex gap-2 justify-center md:justify-start">
+      <a href="#" class="boton-primario bg-purple-600 text-white px-4 py-2 rounded">Get In Touch</a>
+      <a href="#" class="boton-secundario border border-purple-600 px-4 py-2 rounded text-purple-600">Browse Projects</a>
+    </div>
+  </div>
+  <div class="imagen-hero w-[200px] h-[200px] md:w-[300px] md:h-[300px] border-[5px] border-white rounded-full overflow-hidden">
+    <img src="imagenes/pexels-jessbaileydesign-1018133.jpg" alt="Foto de Luca, un desarrollador frontend" class="w-full h-full object-cover">
+  </div>
+</section>
 
     <!--proyects  -->
-      
-   <section class="seccion-proyectos">
-      <div class="contenedorH"> <h2>Proyectos.</h2>
-    </div>
-   
-    <div class="contenedor-tarjetas">
-
-        <div class="tarjeta-proyecto">
-            <div class="imagen-proyecto">
-                <img src="imagenes/pexels-jessbaileydesign-1018133.jpg"  alt="Descripción de la imagen del proyecto">
-            </div>
-            <div class="info-proyecto">
-                <h3>TaskFlow</h3>
-                <p>Task management system with drag-and-drop, real-time collaboration, and responsive layout.</p>
-                <div class="detalles-proyecto">
-                    <span>90</span>
-                    <span>22</span>
-                    <span>25.05.2021</span>
-                    <a href="#" class="boton-tarjeta">Podrobnee</a>
-                </div>
-            </div>
+ 
+<section class="seccion-proyectos py-10">
+  <h2 class="text-center text-[2.5rem] mb-10">Proyectos.</h2>
+  
+  <div class="contenedor-tarjetas 
+    flex gap-[30px]
+    sm:flex-col sm:items-center
+    md:flex-col md:items-center
+    lg:flex-row xl:flex-row 2xl:flex-row">
+    
+    <div class="tarjeta-proyecto">
+      <div class="imagen-proyecto">
+        <img src="imagenes/pexels-jessbaileydesign-1018133.jpg" alt="Proyecto 1" class="rounded">
+      </div>
+      <div class="info-proyecto">
+        <h3>TaskFlow</h3>
+        <p>Task management system with drag-and-drop, real-time collaboration, and responsive layout.</p>
+        <div class="detalles-proyecto">
+          <span>90</span>
+          <span>22</span>
+          <span>25.05.2021</span>
+          <a href="#" class="boton-tarjeta">Podrobnee</a>
         </div>
-
-        <div class="tarjeta-proyecto">
-            <div class="imagen-proyecto">
-                <img src="imagenes/pexels-jessbaileydesign-1018133.jpg"  alt="Descripción de la imagen del proyecto">
-            </div>
-            <div class="info-proyecto">
-                <h3>TaskFlow</h3>
-                <p>Task management system with drag-and-drop, real-time collaboration, and responsive layout.</p>
-                <div class="detalles-proyecto">
-                    <span>90</span>
-                    <span>22</span>
-                    <span>25.05.2021</span>
-                    <a href="#" class="boton-tarjeta">Podrobnee</a>
-                </div>
-            </div>
-            </div>
-
-        <div class="tarjeta-proyecto">
-            <div class="imagen-proyecto">
-                <img src="imagenes/pexels-jessbaileydesign-1018133.jpg"  alt="Descripción de la imagen del proyecto">
-            </div>
-            <div class="info-proyecto">
-                <h3>TaskFlow</h3>
-                <p>Task management system with drag-and-drop, real-time collaboration, and responsive layout.</p>
-                <div class="detalles-proyecto">
-                    <span>90</span>
-                    <span>22</span>
-                    <span>25.05.2021</span>
-                    <a href="#" class="boton-tarjeta">Podrobnee</a>
-                </div>
-            </div>
-            </div>
-
+      </div>
+    </div>
+ <div class="tarjeta-proyecto">
+      <div class="imagen-proyecto">
+        <img src="imagenes/pexels-jessbaileydesign-1018133.jpg" alt="Proyecto 1" class="rounded">
+      </div>
+      <div class="info-proyecto">
+        <h3>TaskFlow</h3>
+        <p>Task management system with drag-and-drop, real-time collaboration, and responsive layout.</p>
+        <div class="detalles-proyecto">
+          <span>90</span>
+          <span>22</span>
+          <span>25.05.2021</span>
+          <a href="#" class="boton-tarjeta">Podrobnee</a>
+        </div>
+      </div>
+    </div>
+ <div class="tarjeta-proyecto">
+      <div class="imagen-proyecto">
+        <img src="imagenes/pexels-jessbaileydesign-1018133.jpg" alt="Proyecto 1" class="rounded">
+      </div>
+      <div class="info-proyecto">
+        <h3>TaskFlow</h3>
+        <p>Task management system with drag-and-drop, real-time collaboration, and responsive layout.</p>
+        <div class="detalles-proyecto">
+          <span>90</span>
+          <span>22</span>
+          <span>25.05.2021</span>
+          <a href="#" class="boton-tarjeta">Podrobnee</a>
+        </div>
+      </div>
     </div>
 
+   
+  </div>
 </section>
+
+
+
 
 <!-- experiencia laboral -->
 

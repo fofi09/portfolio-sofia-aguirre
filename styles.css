@@ -63,17 +63,36 @@ nav a {
     object-fit: cover; 
 }
 /*  */
+
+
+/* .seccion-proyectos h2 {
+    /* text-align: center; */
+    /* font-size: 2.5rem;
+    margin-bottom: 40px; Para separarlo de las tarjetas */
+     /* align-self: flex-end;
+} */ 
+
 .seccion-proyectos h2 {
-    text-align: center;
     font-size: 2.5rem;
-    margin-bottom: 40px; /* Para separarlo de las tarjetas */
+    margin-bottom: 20px;
+    margin-left: 150px; /* **Este es el cambio clave** para emparejar el padding del contenedor */
+    text-align: left;
 }
-.contenedor-tarjetas {
+
+
+/* .contenedor-tarjetas {
     display: flex; 
     justify-content: center; 
-    gap: 30px; /* Separación entre cada tarjeta */
+    gap: 30px; 
     max-width: 1200px; 
     margin: 0 auto; 
+} */
+.contenedor-tarjetas {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
  .tarjeta-proyecto {
@@ -207,12 +226,20 @@ nav a {
 }
 
 /* skills */
-.seccion-skills h2 {
+/* .seccion-skills h2 {
     font-size: 2.5rem;
     text-align: center;
     margin-top: 50px;
     margin-bottom: 30px;
+} */
+
+.seccion-skills h2 {
+    font-size: 2.5rem;
+     margin-bottom: 20px;
+    margin-left: 150px; 
+    text-align: left;
 }
+
 
 .contenedor-skills {
     max-width: 900px;
@@ -266,7 +293,8 @@ footer {
     justify-content: space-between;
     align-items: flex-start;
     gap: 100px;
-    padding: 0 135px;
+    padding: 0 135px; 
+    /* este valor es para ajustar y q se alinee sof  */
 }
  /* el contenedor footer de abajo es para poner los iconos en el medio medio */
 /* .contenedor-footer {
