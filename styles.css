@@ -208,20 +208,21 @@ nav a {
     margin: 0 auto;
     display: flex;
     justify-content: center; 
-    gap: 10px; /* Separación entre las tarjetas */
+    gap: 17.5px; /* Separación entre las tarjetas */
+    background-color: #e7e2e2;
 }
 
 .skill-card {
-    flex-basis: 30%; 
+    flex-basis: 29%; 
     flex-grow: 0;
     flex-shrink: 0;
     
-    background-color: #210d3f;
+    background-color: #b69c75;
     padding: 20px;
     border-radius: 10px;
     text-align: center;
     color: #fff;
-    border: 2px solid #6c63ff;
+    /* border: 2px solid #6c63ff; */
 }
 
 .skill-icon {
