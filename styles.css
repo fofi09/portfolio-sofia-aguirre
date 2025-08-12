@@ -108,33 +108,98 @@ nav a {
     margin: 0 auto;
 }
 
- .tarjeta-proyecto {
+ /* .tarjeta-proyecto {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    flex-basis: 255px; /* esto alinea*/
+    flex-basis: 255px; 
 }
 .imagen-proyecto img {
     width: 100%;
     height: auto; 
     display: block; 
     border-radius: 5px; 
+} */
+
+/* ... tu código anterior ... */
+
+.tarjeta-proyecto {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    flex-basis: 255px; /* esto alinea*/
 }
+
+/* ** Nuevo código para arreglar el tamaño de las imágenes **
+  1. Le damos a la caja de la imagen una posición relativa.
+  2. Usamos 'padding-top' para darle una altura que mantenga la proporción,
+     en este caso, 100% para que sea cuadrada.
+  3. Ponemos la altura en 0 para que el 'padding' defina la altura.
+  4. Le ponemos un 'overflow: hidden' para que no se salga la imagen.
+*/
+.imagen-proyecto {
+    position: relative;
+    padding-top: 100%; /* Esto crea una caja 1:1 (cuadrada) */
+    height: 0; 
+    overflow: hidden;
+    border-radius: 5px; 
+}
+
+/* ** Ahora, ajustamos la imagen para que llene la caja **
+  1. Le damos una posición absoluta para que la podamos mover dentro de su contenedor.
+  2. Hacemos que ocupe todo el espacio (100% de ancho y alto).
+  3. 'object-fit: cover' es clave: se asegura de que la imagen cubra todo el espacio sin deformarse,
+     recortando las partes sobrantes si es necesario.
+*/
+.imagen-proyecto img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block;
+    border-radius: 5px;
+}
+
 
 /*  experiencia*/
 /*  */
 
-.seccion-experiencia h2 {
+/* .seccion-experiencia h2 {
     font-size: 2.5rem;
     margin-top: 40px; 
-    margin-bottom: 20px; 
+    margin-bottom: 25px; 
 }
 
 
 .contenedor-experiencias {
     max-width: 900px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+} */
+
+/* ... tu código anterior ... */
+
+.seccion-experiencia h2 {
+    font-size: 2.5rem;
+    margin-top: 40px; 
+    margin-bottom: 25px; 
+    /* Agregamos el margen izquierdo para que el título se alinee con el resto */
+    text-align: left;
+    margin-right: auto; /* Este valor podría ser ajustado si el .contenedor tiene un padding */
+}
+
+
+.contenedor-experiencias {
+    /* ** ¡CAMBIO CLAVE! ** */
+    /* Quitamos el 'margin: 0 auto' para que no se centre y se alinee a la izquierda */
+    max-width: 900px;
+    margin-left: 135px; /* Alineamos el contenedor a la izquierda, puedes ajustar este valor */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -194,12 +259,65 @@ nav a {
     height: 30px;
 }
 
-/* sobre mi */
+/* sobre mi antes */
 
-.seccion-sobremi {
+/* .seccion-sobremi {
     display: flex;
     justify-content: center; 
     align-items: center; 
+    gap: 78px;
+    padding-top: 70px;
+    padding-bottom: 50px;
+}
+
+.contenido-sobremi {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 500px;
+}
+
+.contenido-sobremi span {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.contenido-sobremi h2 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+.contenido-sobremi p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+/* .imagen-sobremi {
+    max-width: 450px;
+    flex-shrink: 0;
+} 
+
+.imagen-sobremi {
+   
+    max-width: 350px;
+    flex-shrink: 0;
+}
+
+.imagen-sobremi img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+} /*
+
+/* sobre mi
+/* sobre mi */
+
+/* sobre mi */
+
+/* .seccion-sobremi {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 78px;
     padding-top: 70px;
     padding-bottom: 50px;
@@ -233,18 +351,96 @@ nav a {
 }
 
 .imagen-sobremi img {
-    width: 100%;
+   
+    width: 70%;
     height: auto;
     border-radius: 10px;
+    
+    margin: 0 auto;
+
+     margin-left: auto;
+    margin-right: 300px; 
+     
+} */
+
+
+
+
+/* sobre mi */
+
+.seccion-sobremi {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 78px;
+    padding-top: 70px;
+    padding-bottom: 50px;
 }
 
+.contenido-sobremi {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 500px;
+}
+
+.contenido-sobremi span {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.contenido-sobremi h2 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+.contenido-sobremi p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+.imagen-sobremi {
+    max-width: 450px;
+    flex-shrink: 0;
+}
+
+.imagen-sobremi img {
+    /* ** ÚNICO CAMBIO: Este código hace la imagen más pequeña y la empuja a la derecha ** */
+    width: 70%; /* Mantiene el tamaño que te gusta */
+    height: auto;
+    border-radius: 10px;
+    display: block; /* Para que el margin funcione correctamente */
+    margin-left: auto; /* Empuja la imagen al lado derecho de su contenedor */
+    margin-right: 0; /* Asegura que no haya margen extra a la derecha */
+}
+
+
+
+
+
+
 /* skills */
-.seccion-skills h2 {
+/* .seccion-skills h2 {
     font-size: 2.5rem;
     text-align: center;
     margin-top: 50px;
     margin-bottom: 30px;
+} */
+/* .seccion-skills h2 {
+    font-size: 2.5rem;
+     margin-bottom: 20px;
+ margin-left: 110px;
+ text-align: left;
+} */
+ .seccion-skills h2 {
+ font-size: 2.5rem;
+  margin-top: 50px;
+ margin-bottom: 30px;
+/* Aquí está la clave para alinear */
+ text-align: left;
+ margin-left: 135px;
 }
+
 
 .contenedor-skills {
     max-width: 900px;
@@ -276,13 +472,21 @@ nav a {
 }
 
 .skill-card h3 {
-    font-size: 1rem;
+    font-size: 1.3rem;
     margin-bottom: 8px;
 }
 
-.skill-card p {
+/* .skill-card p {
     font-size: 0.8rem;
     line-height: 1.3;
+} */
+
+.skill-card ul li {
+    /* font-size: 0.8rem; */
+    font-size: 1rem;
+    line-height: 1.3;
+     list-style-type: none;
+   
 }
 
 /* footer */
