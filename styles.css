@@ -19,7 +19,7 @@ nav {
     gap: 20px; /* Esto es como un "margin" pero para Flexbox. ¡Genial para separar! */
 }
 nav a {
-    text-decoration: none; /* ¡Chau, subrayado! */
+    text-decoration: none; 
     color: #333; /* Un color oscuro para que se lea bien */
 }
 /*hero*/
@@ -28,7 +28,7 @@ nav a {
     justify-content: center; 
     align-items: center;  
     padding: 50px 0; 
-    gap: 110px; 
+    gap: 115px; 
 }
 .contenido-hero {
     display: flex;
@@ -42,12 +42,13 @@ nav a {
 
 .contenido-hero p {
     font-size: 1.2rem;
-    max-width: 500px; 
+    max-width: 505px; 
+    /* aqui hago q se alineee con el resto de la pagina */
 }
 
 .botones {
     display: flex;
-    gap: 10px; /* separa los dos botnes */
+    gap: 10px; 
 }
 .imagen-hero {
     width: 300px;
@@ -88,7 +89,7 @@ nav a {
 .seccion-proyectos h2 {
  font-size: 2.5rem;
  margin-bottom: 20px;
- margin-left: 150px; /* **Este es el cambio clave** para emparejar el padding del contenedor */
+ margin-left: 137px; /* **Este es el cambio clave** para emparejar el padding del contenedor */
  text-align: left;
 
 }
