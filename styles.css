@@ -254,7 +254,8 @@ nav a {
     margin: 0 auto;
     display: flex;
     justify-content: center;
-    gap: 17.5px;
+    gap: 17.7px;
+    /* 17.5  */
     background-color: #e7e2e2;
 }
 
