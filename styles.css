@@ -8,20 +8,37 @@
     padding: 0 20px;
 }
 
-header{
+/* header{
     display: flex;
     justify-content: space-between;
     align-items: center; 
     padding: 20px 0; 
-}
-nav {
+} */
+
+header {
     display: flex;
-    gap: 20px; /* Esto es como un "margin" pero para Flexbox. ¡Genial para separar! */
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 135px;  /* mismo padding que usas en otras secciones */
+    box-sizing: border-box;
+}
+
+
+header nav {
+    display: flex;
+    gap: 20px; 
+      margin-left: auto; 
 }
 nav a {
     text-decoration: none; 
-    color: #333; /* Un color oscuro para que se lea bien */
+    color: #333; 
 }
+
+
+
+/* El resto de tu código CSS para el menú no se ha modificado */
+
+
 /*hero*/
 .seccion-hero {
     display: flex; 
