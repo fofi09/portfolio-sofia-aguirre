@@ -125,21 +125,33 @@ if (formulario) {
 
 
 
+// CAMBIAR IMAGEN DEL HERO AL CLIC
+// Cambiar imagen al hacer clic
+const imagenHero = document.getElementById('imagen-hero');
+
+function cambiarImagen() {
+    imagenHero.src = "imagenes/avatar2.png"; // ruta de la nueva imagen
+}
+
+if (imagenHero) {
+    imagenHero.addEventListener('click', cambiarImagen);
+}
+
+
+// // CAMBIAR IMAGEN SOBRE MÍ AL CLIC
+// document.addEventListener("DOMContentLoaded", () => {
+//     const imagenSobreMi = document.getElementById('sobre-mi');
+
+//     function cambiarSobreMi() {
+//         imagenSobreMi.src = "imagenes/yo5 (1).png";
+//     }
+
+//     if (imagenSobreMi) {
+//         imagenSobreMi.addEventListener('click', cambiarSobreMi);
+//     }
+// });
 
 
 
 
 
-
-
-//htmll
-//     <img id="imagen" src="img/auris1.jpg" alt="">
-
-//     <img id="imagen2">
-// </div>
-//js
-//     function cambiarImagen(){
-//     imagen.src="img/elefant.jpg"
-// }
-
-// imagen.addEventListener('click',cambiarImagen)
