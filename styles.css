@@ -27,16 +27,12 @@ header {
 header nav {
     display: flex;
     gap: 20px; 
-      margin-left: auto; 
+    margin-left: auto; 
 }
 nav a {
     text-decoration: none; 
     color: #333; 
 }
-
-
-
-/* El resto de tu código CSS para el menú no se ha modificado */
 
 
 /*hero*/
@@ -57,16 +53,104 @@ nav a {
     margin: 0; 
 }
 
+/*  */
+.icono-titulo {
+    width: 45px;
+    height: 45px;
+    vertical-align: middle;
+}
 .contenido-hero p {
     font-size: 1.2rem;
     max-width: 505px; 
     /* aqui hago q se alineee con el resto de la pagina */
 }
 
+/* .botones {
+    display: flex;
+    gap: 10px; 
+} */
+/* nuevo */
+/* Estilo de botones del hero */
+/* .botones a {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;  
+    border: none;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+
 .botones {
+    display: flex;
+    align-items: center; 
+}
+
+
+.iconos-hero {
     display: flex;
     gap: 10px; 
 }
+
+
+.iconos-hero a {
+    background: none;   
+    padding: 0;         
+    border: none;       
+}
+
+.iconos-hero img {
+    background: none;   
+}
+ */
+
+
+
+ /* el de arriba bien */
+
+ .botones {
+    display: flex;
+    align-items: center;
+    gap: 178px; /* espacio entre botones e iconos */
+}
+
+.grupo-botones {
+    display: flex;
+    gap: 10px; /* espacio pequeño entre los botones */
+}
+
+.botones a {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.iconos-hero {
+    display: flex;
+    gap: 5px; /* espacio entre iconos */
+}
+
+.iconos-hero a {
+    background: none;
+    padding: 0;
+    border: none;
+}
+
+.iconos-hero img {
+    background: none;
+  
+
+    width: 40px;  /* ← aquí cambias el ancho */
+    height: 40px; /* ← aquí cambias la altura */
+
+}
+
+/* viejo */
 .imagen-hero {
     width: 300px;
     height: 300px;
