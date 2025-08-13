@@ -384,3 +384,8 @@ formulario.addEventListener('submit', (evento) => {
   // Llamamos a la función de validación.
   validarFormulario();
 });
+
+
+/*
+variables funciones y eventos, en ese orden asiq no modifiques el js, ademas si anda. perooo es como q el srcoll sueve fuenciona perfecto, no se si quieo lo cambies pq seria de una forma mas avanzada y el profe va enseñando coss simples, la cosa es q no se pq algunaa cosas del nav si tieen scroll sueve y otras no, en el nav del footer todo tieen scroll suave esta bien, pero en el nav osea menu del principio algunas cosas no tieen scroll suave, no se a q se debe. tmb, me gustaria q, el fromulario esta excelente tiene td lo q me gusta, variables y funciones en español, pero ademas, tiene la logica del formilario esta perfecta, simple com se lo requiere, soo necesito q luego de enviar, osea yoponele no pogo el nombre y me aparece el mensaje de q falta poner el nombre bien, luego cuando completo td envo me dice dato enviaos y se queda ahi no mg q td el tiempo ese el mensaje de datos envaidos, y ademas al ya haber enviado las casillas queda con la info, es decir queda mi nombe email luego de haebr enviado, me gustaria q os inputs se liempiem, de la forma mas faceil la cuel se q es con ""
+*/ 
