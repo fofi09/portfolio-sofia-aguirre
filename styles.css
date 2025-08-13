@@ -1,19 +1,13 @@
 *{
     padding: 0;
     margin: 0;
+
 }
 .contenedor {
      max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
-
-/* header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center; 
-    padding: 20px 0; 
-} */
 
 header {
     display: flex;
@@ -32,6 +26,7 @@ header nav {
 nav a {
     text-decoration: none; 
     color: #333; 
+   
 }
 
 
@@ -109,30 +104,44 @@ nav a {
 
  /* el de arriba bien */
 
- .botones {
+ /* .botones {
     display: flex;
     align-items: center;
-    gap: 178px; /* espacio entre botones e iconos */
+    gap: 178px; 
 }
 
 .grupo-botones {
     display: flex;
-    gap: 10px; /* espacio pequeño entre los botones */
-}
+    gap: 10px; /
+} */
 
-.botones a {
-    background-color: black;
+/* .botones a { */
+    /* background-color: black;
     color: white;
     padding: 10px 20px;
     text-decoration: none;
     border: none;
     border-radius: 5px;
     display: inline-block;
-}
 
-.iconos-hero {
+     width: 150px; 
+    text-align: center; */
+
+
+      /* background-color: black;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    display: inline-block;
+    box-sizing: border-box;
+
+} */
+
+/* .iconos-hero {
     display: flex;
-    gap: 5px; /* espacio entre iconos */
+    gap: 5px; 
 }
 
 .iconos-hero a {
@@ -145,9 +154,45 @@ nav a {
     background: none;
   
 
-    width: 40px;  /* ← aquí cambias el ancho */
-    height: 40px; /* ← aquí cambias la altura */
+    width: 40px;  
+    height: 40px; 
+} */
 
+
+.botones {
+    display: flex;
+    justify-content: space-between; /* separa botones e iconos */
+    align-items: center;
+    width: 100%; /* ocupa todo el ancho del contenedor del hero */
+    max-width: 500px; /* límite para que no se abra demasiado */
+}
+
+.grupo-botones {
+    display: flex;
+    gap: 10px; /* espacio entre botones */
+}
+
+.grupo-botones a {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    display: inline-block;
+    box-sizing: border-box;
+    min-width: 120px; /* asegura que todos los botones tengan mínimo este ancho */
+    text-align: center;
+}
+
+.iconos-hero {
+    display: flex;
+    gap: 5px;
+}
+
+.iconos-hero img {
+    width: 40px;
+    height: 40px;
 }
 
 /* viejo */
@@ -164,97 +209,51 @@ nav a {
     height: 100%;
     object-fit: cover; 
 }
-/*  */
 
+/* Proyectos */
 .seccion-proyectos {
-    display: flex; /* Convierte la sección en un contenedor flexible */
-    flex-direction: column; /* Apila los elementos (título y tarjetas) verticalmente */
-    /* El contenedor principal .contenedor se encarga de la alineación,
-    así que no necesitas padding aquí. */
+    display: flex; 
+    flex-direction: column; 
 }
-/* .seccion-proyectos h2 {
-    /* text-align: center; */
-    /* font-size: 2.5rem;
-    margin-bottom: 40px; Para separarlo de las tarjetas */
-     /* align-self: flex-end;
-} */ 
 
-/* .seccion-proyectos h2 {
-   
-    text-align: left;
-    font-size: 2.5rem;
-    margin-bottom: 40px;
-    margin-left: 0; 
-    padding-left: 20px;
-} */
 .seccion-proyectos h2 {
  font-size: 2.5rem;
  margin-bottom: 20px;
- margin-left: 137px; /* **Este es el cambio clave** para emparejar el padding del contenedor */
+ margin-left: 137px; 
  text-align: left;
+
+ 
+     
 
 }
 
-/* .contenedor-tarjetas {
-    display: flex; 
-    justify-content: center; 
-    gap: 30px; 
-    max-width: 1200px; 
-    margin: 0 auto; 
-} */
 .contenedor-tarjetas {
     display: flex;
     justify-content: center;
     gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
-}
 
- /* .tarjeta-proyecto {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    flex-basis: 255px; 
+    
 }
-.imagen-proyecto img {
-    width: 100%;
-    height: auto; 
-    display: block; 
-    border-radius: 5px; 
-} */
-
-/* ... tu código anterior ... */
 
 .tarjeta-proyecto {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    flex-basis: 255px; /* esto alinea*/
-}
+    flex-basis: 255px; 
 
-/* ** Nuevo código para arreglar el tamaño de las imágenes **
-  1. Le damos a la caja de la imagen una posición relativa.
-  2. Usamos 'padding-top' para darle una altura que mantenga la proporción,
-     en este caso, 100% para que sea cuadrada.
-  3. Ponemos la altura en 0 para que el 'padding' defina la altura.
-  4. Le ponemos un 'overflow: hidden' para que no se salga la imagen.
-*/
+    
+}
 .imagen-proyecto {
     position: relative;
-    padding-top: 100%; /* Esto crea una caja 1:1 (cuadrada) */
+    padding-top: 100%; 
     height: 0; 
     overflow: hidden;
     border-radius: 5px; 
 }
 
-/* ** Ahora, ajustamos la imagen para que llene la caja **
-  1. Le damos una posición absoluta para que la podamos mover dentro de su contenedor.
-  2. Hacemos que ocupe todo el espacio (100% de ancho y alto).
-  3. 'object-fit: cover' es clave: se asegura de que la imagen cubra todo el espacio sin deformarse,
-     recortando las partes sobrantes si es necesario.
-*/
 .imagen-proyecto img {
     position: absolute;
     top: 0;
@@ -266,42 +265,53 @@ nav a {
     border-radius: 5px;
 }
 
+.detalles-proyecto {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    margin-top: 15px;
 
-/*  experiencia*/
-/*  */
+     
+}
 
-/* .seccion-experiencia h2 {
-    font-size: 2.5rem;
-    margin-top: 40px; 
-    margin-bottom: 25px; 
+.fecha-proyecto {
+    font-size: 14px;
+    color: #666;
+}
+
+.boton-tarjeta {
+    background-color: black;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.boton-tarjeta:hover {
+    background-color: #333;
 }
 
 
-.contenedor-experiencias {
-    max-width: 900px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-} */
 
-/* ... tu código anterior ... */
+/*  experiencia*/
 
 .seccion-experiencia h2 {
     font-size: 2.5rem;
     margin-top: 40px; 
     margin-bottom: 25px; 
-    /* Agregamos el margen izquierdo para que el título se alinee con el resto */
     text-align: left;
-    margin-right: auto; /* Este valor podría ser ajustado si el .contenedor tiene un padding */
+    margin-right: auto; 
+
+    
+   
 }
 
 
 .contenedor-experiencias {
-    /* ** ¡CAMBIO CLAVE! ** */
-    /* Quitamos el 'margin: 0 auto' para que no se centre y se alinee a la izquierda */
     max-width: 900px;
-    margin-left: 135px; /* Alineamos el contenedor a la izquierda, puedes ajustar este valor */
+    margin-left: 135px; 
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -324,6 +334,7 @@ nav a {
     font-size: 1.5rem;
     font-weight: normal;
     margin: 0;
+
 }
 
 
@@ -333,104 +344,41 @@ nav a {
     margin: 0;
 }
 
-
 .detalles-trabajo li {
     margin-bottom: 10px;
     position: relative;
     padding-left: 20px;
 }
 
-
-/* .detalles-trabajo li::before {
-    content: '✔';
-    color: #6c63ff;
-    position: absolute;
-    left: 0;
-    top: 2px;
-} */
-/* Contenedor de los íconos */
 .lenguajes-usados {
-    display: flex; /* Para que los íconos se pongan uno al lado del otro */
+    display: flex; 
     gap: 10px; /* Espacio entre los íconos */
     margin-top: 10px; /* Separación con el texto de arriba */
 }
 
-/* Estilo de los íconos en sí */
 .lenguajes-usados img {
     width: 30px; /* El tamaño de los íconos */
     height: 30px;
 }
 
-/* sobre mi antes */
+/* sobre mi */
 
-/* .seccion-sobremi {
+ .seccion-sobremi {
     display: flex;
-    justify-content: center; 
-    align-items: center; 
+    justify-content: center;
+    align-items: center;
     gap: 78px;
     padding-top: 70px;
     padding-bottom: 50px;
-}
-
-.contenido-sobremi {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    max-width: 500px;
-}
-
-.contenido-sobremi span {
-    font-size: 1rem;
-    font-weight: bold;
-}
-
-.contenido-sobremi h2 {
-    font-size: 3rem;
-    margin: 0;
-}
-
-.contenido-sobremi p {
-    font-size: 1.1rem;
-    line-height: 1.5;
-}
-
-/* .imagen-sobremi {
-    max-width: 450px;
-    flex-shrink: 0;
 } 
 
-.imagen-sobremi {
-   
-    max-width: 350px;
-    flex-shrink: 0;
-}
-
-.imagen-sobremi img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-} /*
-
-/* sobre mi
-/* sobre mi */
-
-/* sobre mi */
-
-/* .seccion-sobremi {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 78px;
-    padding-top: 70px;
-    padding-bottom: 50px;
-}
-
 .contenido-sobremi {
     display: flex;
     flex-direction: column;
     gap: 10px;
     max-width: 500px;
-}
+} 
+
 
 .contenido-sobremi span {
     font-size: 1rem;
@@ -440,6 +388,7 @@ nav a {
 .contenido-sobremi h2 {
     font-size: 3rem;
     margin: 0;
+
 }
 
 .contenido-sobremi p {
@@ -453,68 +402,19 @@ nav a {
 }
 
 .imagen-sobremi img {
-   
-    width: 70%;
+    width: 70%; 
     height: auto;
     border-radius: 10px;
-    
-    margin: 0 auto;
-
-     margin-left: auto;
-    margin-right: 300px; 
-     
-} */
-
-
-
-
-/* sobre mi */
-
-.seccion-sobremi {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 78px;
-    padding-top: 70px;
-    padding-bottom: 50px;
+    display: block; 
+    margin-left: auto; 
+    margin-right: 0; 
 }
 
-.contenido-sobremi {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    max-width: 500px;
-}
 
-.contenido-sobremi span {
-    font-size: 1rem;
-    font-weight: bold;
-}
 
-.contenido-sobremi h2 {
-    font-size: 3rem;
-    margin: 0;
-}
 
-.contenido-sobremi p {
-    font-size: 1.1rem;
-    line-height: 1.5;
-}
 
-.imagen-sobremi {
-    max-width: 450px;
-    flex-shrink: 0;
-}
 
-.imagen-sobremi img {
-    /* ** ÚNICO CAMBIO: Este código hace la imagen más pequeña y la empuja a la derecha ** */
-    width: 70%; /* Mantiene el tamaño que te gusta */
-    height: auto;
-    border-radius: 10px;
-    display: block; /* Para que el margin funcione correctamente */
-    margin-left: auto; /* Empuja la imagen al lado derecho de su contenedor */
-    margin-right: 0; /* Asegura que no haya margen extra a la derecha */
-}
 
 
 
@@ -522,27 +422,16 @@ nav a {
 
 
 /* skills */
-/* .seccion-skills h2 {
-    font-size: 2.5rem;
-    text-align: center;
-    margin-top: 50px;
-    margin-bottom: 30px;
-} */
-/* .seccion-skills h2 {
-    font-size: 2.5rem;
-     margin-bottom: 20px;
- margin-left: 110px;
- text-align: left;
-} */
  .seccion-skills h2 {
  font-size: 2.5rem;
   margin-top: 50px;
  margin-bottom: 30px;
-/* Aquí está la clave para alinear */
+
  text-align: left;
  margin-left: 135px;
-}
 
+
+}
 
 .contenedor-skills {
     max-width: 900px;
@@ -578,11 +467,6 @@ nav a {
     margin-bottom: 8px;
 }
 
-/* .skill-card p {
-    font-size: 0.8rem;
-    line-height: 1.3;
-} */
-
 .skill-card ul li {
     /* font-size: 0.8rem; */
     font-size: 1rem;
@@ -596,8 +480,6 @@ footer {
     padding: 50px 0;
 }
 
-/* Este es el contenedor clave que alinea el contenido.
-   Lo ajustamos para que se comporte como el .contenedor principal. */
 .contenedor-footer {
     max-width: 1200px; 
     margin: 0 auto;
@@ -607,19 +489,7 @@ footer {
     gap: 100px;
     padding: 0 135px;
 }
- /* el contenedor footer de abajo es para poner los iconos en el medio medio */
-/* .contenedor-footer {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-  
-    align-items: center; 
-    gap: 100px;
-    padding: 0 135px;
-} */
-/* El menú vertical no necesita ajustes de padding o margin,
-   ya que el contenedor padre (.contenedor-footer) se encarga de la alineación. */
+
 .footer-nav-vertical {
     display: flex;
     flex-direction: column;
@@ -676,16 +546,6 @@ footer {
     font-size: 1.2rem;
     margin: 0;
 }
-
-/* .contenedor-iconos {
-    display: flex; 
-    gap: 15px; 
-}
-
-.contenedor-iconos img {
-    width: 30px; 
-    height: 30px;
-} */
 
 .contenedor-iconos {
 display: flex; 
