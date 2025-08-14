@@ -73,10 +73,6 @@ nav a {
 
 .grupo-botones a {
    background-color: rgb(253, 166, 166); 
-    
-         /* #D45578  color icono*/
-         /* el de abajo es el mismo clor de los iconos, bueno casi pero si */
-     /* background-color: hsl(343, 89%, 71%);  */
     color:black;
     padding: 10px 20px;
     text-decoration: none;
@@ -114,7 +110,7 @@ nav a {
     object-fit: cover; /* mantiene proporciones llenando el contenedor */
 }
 
-/*/* estilos de l seccion de los proyectos */*/
+/* seccion proyectos */
 .seccion-proyectos {
     display: flex; 
     flex-direction: column; 

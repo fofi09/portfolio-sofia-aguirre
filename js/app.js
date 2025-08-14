@@ -1,16 +1,16 @@
-// tiene el porden de: vaiables, funciones, eventos
+// tiene el orden de: vaiables, funciones, eventos
 //1. variables
 const enlacesNavegacion = document.querySelectorAll('header nav a, .footer-nav-vertical a, .grupo-botones a');
 
-const botonContacto = document.getElementById('boton-contacto') || null;
-const botonProyectos = document.getElementById('boton-proyectos') || null;
+let botonContacto = document.getElementById('boton-contacto') || null;
+let botonProyectos = document.getElementById('boton-proyectos') || null;
 
-const formulario = document.getElementById('formulario');
-const nombre = document.getElementById('nombre');
-const email = document.getElementById('email');
-const descripcion = document.getElementById('descripcion');
+let formulario = document.getElementById('formulario');
+let nombre = document.getElementById('nombre');
+let email = document.getElementById('email');
+let descripcion = document.getElementById('descripcion');
 
-const mensajeFormulario = document.getElementById('mensaje-formulario');
+let mensajeFormulario = document.getElementById('mensaje-formulario');
 
 
 document.getElementById("miImagen").src = "imagenes/avatar1.png";
@@ -48,11 +48,11 @@ function scrollSuave(idElemento) {
   }
 }
 
-//valida que nombre y  correo hayan sido enviados
+//valida nombre y correo
 function validarFormulario() {
   mensajeFormulario.textContent = '';
-  const nombreValor = nombre.value.trim();
-  const emailValor = email.value.trim();
+  let nombreValor = nombre.value.trim();
+  let emailValor = email.value.trim();
 
   if (nombreValor === '' && emailValor === '') {
     mensajeFormulario.textContent = 'El nombre y el correo electrónico son obligatorios.';
@@ -111,7 +111,7 @@ enlacesNavegacion.forEach(enlace => {
 if (botonContacto) {
   botonContacto.addEventListener('click', (evento) => {
     evento.preventDefault();
-    // console.log('".');
+    
     scrollSuave('contacto');
   });
 }
