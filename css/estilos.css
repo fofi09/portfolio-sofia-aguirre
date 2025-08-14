@@ -18,7 +18,6 @@ header {
     box-sizing: border-box;
 }
 
-
 header nav {
     display: flex;
     gap: 20px; 
@@ -344,6 +343,11 @@ nav a {
     padding-bottom: 50px;
 } 
 
+#b{
+    background-color: transparent;
+   color: #9e264a;
+    text-decoration: none;
+}
 .contenido-sobremi {
     display: flex;
     flex-direction: column;
