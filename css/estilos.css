@@ -3,9 +3,6 @@
     margin: 0;
     background-color:rgb(247, 231, 211)
 
-
-    /* #D45578  color icono*/
-    /* #BA3F62 */
 }
 .contenedor {
      max-width: 1200px;
@@ -17,7 +14,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 135px;  /* mismo padding que usas en otras secciones */
+    padding: 20px 135px;  
     box-sizing: border-box;
 }
 
@@ -32,7 +29,6 @@ nav a {
     color: #1d1b1b; 
    
 }
-
 
 /*hero*/
 .seccion-hero {
@@ -61,119 +57,19 @@ nav a {
 .contenido-hero p {
     font-size: 1.2rem;
     max-width: 505px; 
-    /* aqui hago q se alineee con el resto de la pagina */
+
 }
-
-/* .botones {
-    display: flex;
-    gap: 10px; 
-} */
-/* nuevo */
-/* Estilo de botones del hero */
-/* .botones a {
-    background-color: black;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;  
-    border: none;
-    border-radius: 5px;
-    display: inline-block;
-}
-
-
-.botones {
-    display: flex;
-    align-items: center; 
-}
-
-
-.iconos-hero {
-    display: flex;
-    gap: 10px; 
-}
-
-
-.iconos-hero a {
-    background: none;   
-    padding: 0;         
-    border: none;       
-}
-
-.iconos-hero img {
-    background: none;   
-}
- */
-
-
-
- /* el de arriba bien */
-
- /* .botones {
-    display: flex;
-    align-items: center;
-    gap: 178px; 
-}
-
-.grupo-botones {
-    display: flex;
-    gap: 10px; /
-} */
-
-/* .botones a { */
-    /* background-color: black;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border: none;
-    border-radius: 5px;
-    display: inline-block;
-
-     width: 150px; 
-    text-align: center; */
-
-
-      /* background-color: black;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border: none;
-    border-radius: 5px;
-    display: inline-block;
-    box-sizing: border-box;
-
-} */
-
-/* .iconos-hero {
-    display: flex;
-    gap: 5px; 
-}
-
-.iconos-hero a {
-    background: none;
-    padding: 0;
-    border: none;
-}
-
-.iconos-hero img {
-    background: none;
-  
-
-    width: 40px;  
-    height: 40px; 
-} */
-
 
 .botones {
     display: flex;
     justify-content: space-between; /* separa botones e iconos */
     align-items: center;
-    width: 100%; /* ocupa todo el ancho del contenedor del hero */
-    max-width: 500px; /* límite para que no se abra demasiado */
+    width: 100%; 
+    max-width: 500px; 
 }
-
 .grupo-botones {
     display: flex;
-    gap: 10px; /* espacio entre botones */
+    gap: 10px; 
 }
 
 .grupo-botones a {
@@ -191,7 +87,7 @@ nav a {
     border-radius: 5px;
     display: inline-block;
     box-sizing: border-box;
-    min-width: 120px; /* asegura que todos los botones tengan mínimo este ancho */
+    min-width: 120px; 
     text-align: center;
 }
 .grupo-botones a:hover {
@@ -207,7 +103,6 @@ nav a {
     height: 40px;
 }
 
-/* viejo */
 .imagen-hero {
     width: 300px;
     height: 300px;
@@ -246,8 +141,6 @@ nav a {
 }
 
 .tarjeta-proyecto {
-    /* background-color: #faf5f5f3; */
-      /* background-color: #ac9da4f3; */
     background-color:antiquewhite;
     border-radius: 10px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
@@ -307,8 +200,6 @@ nav a {
     background-color: #fc95e5 ;  
 }
 
-
-
 /*  experiencia*/
 
 .seccion-experiencia h2 {
@@ -366,7 +257,7 @@ nav a {
 
 .lenguajes-usados {
     display: flex; 
-    gap: 10px; /* Espacio entre los íconos */
+    gap: 10px; 
     margin-top: 10px; /* Separación con el texto de arriba */
 }
 
@@ -518,7 +409,6 @@ footer {
     color: #333;
     font-weight: bold;
 }
-
 
 .formulario-contacto {
     max-width: 300px;

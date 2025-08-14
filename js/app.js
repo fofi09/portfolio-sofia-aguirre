@@ -1,32 +1,52 @@
-
-//////////////////////
-// Este código maneja la interactividad del portafolio.
-
 // 1. VARIABLES
-// =============================================================
-// Variables para el scroll suave en la navegación principal y el footer.
-const enlacesNavegacion = document.querySelectorAll('header nav a, .footer-nav-vertical a');
 
-// Variables para los botones principales del hero (pueden no existir en algunas páginas).
+// const enlacesNavegacion = document.querySelectorAll('header nav a, .footer-nav-vertical a');
+const enlacesNavegacion = document.querySelectorAll('header nav a, .footer-nav-vertical a, .grupo-botones a');
+
 const botonContacto = document.getElementById('boton-contacto') || null;
 const botonProyectos = document.getElementById('boton-proyectos') || null;
 
-// Variables para el formulario de contacto y sus campos.
 const formulario = document.getElementById('formulario');
 const nombre = document.getElementById('nombre');
 const email = document.getElementById('email');
 const descripcion = document.getElementById('descripcion');
 
-// Nueva variable para el mensaje del formulario.
 const mensajeFormulario = document.getElementById('mensaje-formulario');
 
 
 // 2. FUNCIONES
 // =============================================================
+// function scrollSuave(idElemento) {
+//   const seccionObjetivo = document.getElementById(idElemento);
+//   if (seccionObjetivo) {
+//     const posicionObjetivo = seccionObjetivo.getBoundingClientRect().top;
+//     const posicionInicial = window.pageYOffset;
+//     let tiempoInicio = null;
+//     const duracion = 800;
+
+//     function animacionScroll(tiempoActual) {
+//       if (tiempoInicio === null) {
+//         tiempoInicio = tiempoActual;
+//       }
+//       const tiempoPasado = tiempoActual - tiempoInicio;
+//       const progreso = Math.min(tiempoPasado / duracion, 1);
+//       const easing = 0.5 * (1 - Math.cos(Math.PI * progreso));
+//       window.scrollTo(0, posicionInicial + (posicionObjetivo * easing));
+//       // window.scrollTo(0, posicionInicial + (posicionObjetivo - posicionInicial) * easing);
+
+//       if (tiempoPasado < duracion) {
+//         window.requestAnimationFrame(animacionScroll);
+//       }
+//     }
+//     window.requestAnimationFrame(animacionScroll);
+//   }
+// }
+
 function scrollSuave(idElemento) {
   const seccionObjetivo = document.getElementById(idElemento);
   if (seccionObjetivo) {
-    const posicionObjetivo = seccionObjetivo.getBoundingClientRect().top;
+
+    const posicionObjetivo = seccionObjetivo.offsetTop;
     const posicionInicial = window.pageYOffset;
     let tiempoInicio = null;
     const duracion = 800;
@@ -38,7 +58,9 @@ function scrollSuave(idElemento) {
       const tiempoPasado = tiempoActual - tiempoInicio;
       const progreso = Math.min(tiempoPasado / duracion, 1);
       const easing = 0.5 * (1 - Math.cos(Math.PI * progreso));
-      window.scrollTo(0, posicionInicial + (posicionObjetivo * easing));
+
+      window.scrollTo(0, posicionInicial + (posicionObjetivo - posicionInicial) * easing);
+
       if (tiempoPasado < duracion) {
         window.requestAnimationFrame(animacionScroll);
       }
@@ -70,12 +92,12 @@ function validarFormulario() {
   console.log('Validación del formulario exitosa. Enviando datos...');
   
 
-  // Limpiar campos después de enviar
+  // limpio los inputs de nombr, email y descripcion
   nombre.value = '';
   email.value = '';
   descripcion.value = '';
 
-  // aqui borro el mensaje "enviando datos" luego e 4 segundos asi no queda todo el tiempo 
+  // aqui borro el mensaje "enviando datos" luego de 4 segundos asi no queda todo el tiempo 
   setTimeout(() => {
     mensajeFormulario.textContent = '';
   }, 4000);
@@ -86,7 +108,7 @@ function validarFormulario() {
 
 
 // 3. EVENTOS
-// =============================================================
+
 // Evento para los enlaces de navegación con scroll suave.
 enlacesNavegacion.forEach(enlace => {
   enlace.addEventListener('click', (evento) => {
@@ -105,24 +127,22 @@ if (botonContacto) {
   });
 }
 
-// Evento para el botón de "Browse Projects" (solo si existe).
+
 if (botonProyectos) {
   botonProyectos.addEventListener('click', (evento) => {
     evento.preventDefault();
-    // console.log('');
+  
     scrollSuave('proyectos');
   });
 }
 
-// Evento para el formulario de contacto.
+
 if (formulario) {
   formulario.addEventListener('submit', (evento) => {
     evento.preventDefault();
     validarFormulario();
   });
 }
-
-
 
 
 // CAMBIAR IMAGEN DEL HERO AL CLIC
@@ -138,18 +158,6 @@ if (imagenHero) {
 }
 
 
-// // CAMBIAR IMAGEN SOBRE MÍ AL CLIC
-// document.addEventListener("DOMContentLoaded", () => {
-//     const imagenSobreMi = document.getElementById('sobre-mi');
-
-//     function cambiarSobreMi() {
-//         imagenSobreMi.src = "imagenes/yo5 (1).png";
-//     }
-
-//     if (imagenSobreMi) {
-//         imagenSobreMi.addEventListener('click', cambiarSobreMi);
-//     }
-// });
 
 
 
