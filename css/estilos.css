@@ -47,7 +47,7 @@ nav a {
     margin: 0; 
 }
 
-/*  */
+
 .icono-titulo {
     width: 45px;
     height: 45px;
@@ -72,8 +72,6 @@ nav a {
 }
 
 .grupo-botones a {
-
-  
    background-color: rgb(253, 166, 166); 
     
          /* #D45578  color icono*/
@@ -107,16 +105,16 @@ nav a {
     height: 300px;
     border: 5px solid #fff; 
     border-radius: 50%; 
-    overflow: hidden; 
+    overflow: hidden; /* corta lo que sobresale */
 }
 
 .imagen-hero img {
     width: 100%;
     height: 100%;
-    object-fit: cover; 
+    object-fit: cover; /* mantiene proporciones llenando el contenedor */
 }
 
-/* Proyectos */
+/*/* estilos de l seccion de los proyectos */*/
 .seccion-proyectos {
     display: flex; 
     flex-direction: column; 
@@ -200,7 +198,7 @@ nav a {
     background-color: #fc95e5 ;  
 }
 
-/*  experiencia*/
+/* seccion  experiencia*/
 
 .seccion-experiencia h2 {
     font-size: 2.5rem;
@@ -217,7 +215,7 @@ nav a {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-     /* padding-top: 10px; */
+    
 }
 
 .experiencia {
@@ -238,8 +236,6 @@ nav a {
     font-weight: normal;
     margin: 0;
     color:  black;
-       /* color:  rgb(233, 86, 106); */
-          /* color:  rgb(218, 7, 105); */
 
 }
 
@@ -292,15 +288,8 @@ nav a {
     flex-basis: 29%;
     flex-grow: 0;
     flex-shrink: 0;
-    
-    /* la e abajo no esta buena epro si para letras */
-   /* background-color: rgb(241, 121, 121); */
-
-   /* tenes q elegir uno */
       /* background-color: rgba(253, 159, 172, 0.5); */
-          background-color: rgba(250, 83, 105, 0.3);
-
-
+    background-color: rgba(250, 83, 105, 0.3);
     padding: 20px;
     border-radius: 2px;
     text-align: center;
@@ -325,14 +314,12 @@ nav a {
     font-size: 1rem;
     line-height: 1.3;
      list-style-type: none;
-       /* background-color: rgba(253, 159, 172, 0.8); */
-          /* background-color: rgba(253, 159, 172, 0.5); */
      background-color: rgba(250, 83, 105, 0.3);
    
 }
 
 
-/* sobre mi */
+/* seccion  sobre mi */
 
  .seccion-sobremi {
     display: flex;

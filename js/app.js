@@ -1,6 +1,5 @@
-// 1. VARIABLES
-
-// const enlacesNavegacion = document.querySelectorAll('header nav a, .footer-nav-vertical a');
+// tiene el porden de: vaiables, funciones, eventos
+//1. variables
 const enlacesNavegacion = document.querySelectorAll('header nav a, .footer-nav-vertical a, .grupo-botones a');
 
 const botonContacto = document.getElementById('boton-contacto') || null;
@@ -13,35 +12,12 @@ const descripcion = document.getElementById('descripcion');
 
 const mensajeFormulario = document.getElementById('mensaje-formulario');
 
+const imagenHero = document.getElementById('imagen-hero');
 
 // 2. FUNCIONES
-// =============================================================
-// function scrollSuave(idElemento) {
-//   const seccionObjetivo = document.getElementById(idElemento);
-//   if (seccionObjetivo) {
-//     const posicionObjetivo = seccionObjetivo.getBoundingClientRect().top;
-//     const posicionInicial = window.pageYOffset;
-//     let tiempoInicio = null;
-//     const duracion = 800;
 
-//     function animacionScroll(tiempoActual) {
-//       if (tiempoInicio === null) {
-//         tiempoInicio = tiempoActual;
-//       }
-//       const tiempoPasado = tiempoActual - tiempoInicio;
-//       const progreso = Math.min(tiempoPasado / duracion, 1);
-//       const easing = 0.5 * (1 - Math.cos(Math.PI * progreso));
-//       window.scrollTo(0, posicionInicial + (posicionObjetivo * easing));
-//       // window.scrollTo(0, posicionInicial + (posicionObjetivo - posicionInicial) * easing);
 
-//       if (tiempoPasado < duracion) {
-//         window.requestAnimationFrame(animacionScroll);
-//       }
-//     }
-//     window.requestAnimationFrame(animacionScroll);
-//   }
-// }
-
+//para q el sroll sea suave tantoen los mens como en los botones
 function scrollSuave(idElemento) {
   const seccionObjetivo = document.getElementById(idElemento);
   if (seccionObjetivo) {
@@ -69,6 +45,7 @@ function scrollSuave(idElemento) {
   }
 }
 
+//valida que nombre y  correo hayan sido enviados
 function validarFormulario() {
   mensajeFormulario.textContent = '';
   const nombreValor = nombre.value.trim();
@@ -76,15 +53,13 @@ function validarFormulario() {
 
   if (nombreValor === '' && emailValor === '') {
     mensajeFormulario.textContent = 'El nombre y el correo electrónico son obligatorios.';
-    console.error('Error: El nombre y el correo electrónico son obligatorios.');
     return false;
   } else if (nombreValor === '') {
     mensajeFormulario.textContent = 'El nombre es obligatorio.';
-    console.error('Error: El nombre es obligatorio.');
     return false;
   } else if (emailValor === '') {
     mensajeFormulario.textContent = 'El correo electrónico es obligatorio.';
-    console.error('Error: El correo electrónico es obligatorio.');
+
     return false;
   }
 
@@ -106,6 +81,9 @@ function validarFormulario() {
 
 }
 
+function cambiarImagen() {
+    imagenHero.src = "imagenes/avatar2.png"; 
+}
 
 // 3. EVENTOS
 
@@ -118,7 +96,6 @@ enlacesNavegacion.forEach(enlace => {
   });
 });
 
-// Evento para el botón de "Get In Touch" (solo si existe).
 if (botonContacto) {
   botonContacto.addEventListener('click', (evento) => {
     evento.preventDefault();
@@ -144,14 +121,8 @@ if (formulario) {
   });
 }
 
-
-// CAMBIAR IMAGEN DEL HERO AL CLIC
 // Cambiar imagen al hacer clic
-const imagenHero = document.getElementById('imagen-hero');
-
-function cambiarImagen() {
-    imagenHero.src = "imagenes/avatar2.png"; // ruta de la nueva imagen
-}
+//solo una vez al hacer click en la imagen  camni
 
 if (imagenHero) {
     imagenHero.addEventListener('click', cambiarImagen);
