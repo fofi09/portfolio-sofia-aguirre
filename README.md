@@ -20,7 +20,7 @@ Este es mi portfolio personal, soy una desarrolladora Fullstack. El sitio web mu
 ### Cómo ver el proyecto
 
 Puedes ver una versión desplegada del proyecto en el siguiente enlace:
-[**Ver Portfolio**]([https://tusitioengh-pages.com](https://fofi09.github.io/sliderRotativo1/))
+[**Ver Portfolio**](https://fofi09.github.io/sliderRotativo1/)
 
 ---
 ### Contacto
