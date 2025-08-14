@@ -12,12 +12,15 @@ const descripcion = document.getElementById('descripcion');
 
 const mensajeFormulario = document.getElementById('mensaje-formulario');
 
-const imagenHero = document.getElementById('imagen-hero');
+
+document.getElementById("miImagen").src = "imagenes/avatar1.png";
+
+// es para saber en cual imagen esta
+let imagenActual = 1; 
 
 // 2. FUNCIONES
 
-
-//para q el sroll sea suave tantoen los mens como en los botones
+//para q el sroll sea suave tanto en los menus como en los botones
 function scrollSuave(idElemento) {
   const seccionObjetivo = document.getElementById(idElemento);
   if (seccionObjetivo) {
@@ -81,8 +84,17 @@ function validarFormulario() {
 
 }
 
+//con cada click la imagen cambia
 function cambiarImagen() {
-    imagenHero.src = "imagenes/avatar2.png"; 
+    let imagen = document.getElementById("miImagen");
+
+    if (imagenActual === 1) {
+        imagen.src = "imagenes/avatar2.png"; // Cambia a la segunda imagen
+        imagenActual = 2; 
+    } else {
+        imagen.src = "imagenes/avatar1.png"; // Vuelve a la primera imagen
+        imagenActual = 1; 
+    }
 }
 
 // 3. EVENTOS
@@ -121,12 +133,8 @@ if (formulario) {
   });
 }
 
-// Cambiar imagen al hacer clic
-//solo una vez al hacer click en la imagen  camni
 
-if (imagenHero) {
-    imagenHero.addEventListener('click', cambiarImagen);
-}
+
 
 
 
