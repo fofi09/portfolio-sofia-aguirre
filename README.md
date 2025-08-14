@@ -12,8 +12,8 @@ Este es mi portfolio personal, soy una desarrolladora Fullstack. El sitio web mu
 ---
 ### Tecnologías Utilizadas
 
-- **HTML5:** Para la estructura del contenido.
-- **CSS3:** Para dar estilo y diseño, utilizando Flexbox para la maquetación.
+- **HTML:** Para la estructura del contenido.
+- **CSS:** Para dar estilo y diseño, utilizando Flexbox para la maquetación.
 - **JavaScript:** Para la funcionalidad interactiva, como el scroll suave, el validador de formulario y el cambio de imagen.
 
 ---
@@ -27,6 +27,6 @@ Puedes ver una versión desplegada del proyecto en el siguiente enlace:
 
 - **GitHub:** (https://github.com/fofi09)
 - **Email:** aguirreanasofia07@gmail.com
-- **WhatsApp:**  +5493815974846
+- **WhatsApp:**  [+5493815974846](https://wa.me/5493815974846)
 
 ¡No dudes en contactarme si tienes alguna pregunta o sugerencia!
