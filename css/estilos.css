@@ -422,13 +422,14 @@ footer {
 .formulario-contacto .boton-primario {
     /* background-color: #ff63a4; */
     background-color: #f08e8e;
-    color: #fff;
+    color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     
 }
+
 .footer-tecnologias {
     display: flex;
     flex-direction: column;
