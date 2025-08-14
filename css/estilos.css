@@ -425,7 +425,6 @@ footer {
     width: 100%;
     padding: 8px;
     margin-bottom: 10px;
-    /* border: 1px solid #ccc; */
     border: 1px solid #f08e8e;
     border-radius: 5px;
 }
@@ -444,12 +443,10 @@ footer {
     cursor: pointer;
     
 }
-
-/* Nuevo estilo para la sección de tecnologías en el footer */
 .footer-tecnologias {
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Espacio entre el título y los iconos */
+    gap: 10px; 
 }
 
 .footer-tecnologias h4 {
