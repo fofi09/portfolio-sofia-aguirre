@@ -127,6 +127,8 @@ nav a {
  margin-left: 137px; 
  text-align: left;
 
+ padding-top: 55px;
+
 }
 
 .contenedor-tarjetas {
@@ -174,17 +176,11 @@ nav a {
 }
 .fecha-proyecto {
     font-size: 14px;
-    /* color: #666; */
       color: #424040;
+      
 }
 .boton-tarjeta {
-    /* background-color: rgb(245, 181, 181); */
-     background-color: rgb(250, 177, 177);
-      /* background-color: rgb(245, 181, 181); */
-     /* background-color: #f37095 ;  */
-      /* background-color: #fc95e5 ;  */
-      /* background-color: #f89be4 ;  */
-
+    background-color: rgb(250, 177, 177);
     color:black;
     padding: 8px 16px;
     text-decoration: none;
@@ -195,7 +191,7 @@ nav a {
 
 
 .boton-tarjeta:hover {
-    background-color: #fc95e5 ;  
+    background-color: rgb(240, 188, 188);
 }
 
 /* seccion  experiencia*/
@@ -288,7 +284,7 @@ nav a {
     flex-basis: 29%;
     flex-grow: 0;
     flex-shrink: 0;
-      /* background-color: rgba(253, 159, 172, 0.5); */
+     /* background-color: rgba(253, 159, 172, 0.5); */
     background-color: rgba(250, 83, 105, 0.3);
     padding: 20px;
     border-radius: 2px;
