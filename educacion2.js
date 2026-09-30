@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 👇 NUEVO: Cierra el certificado automáticamente al hacer scroll
+    // Cierra el certificado automáticamente al hacer scroll
     window.addEventListener('scroll', function() {
         if (modal.classList.contains('show')) {
             modal.classList.remove('show');

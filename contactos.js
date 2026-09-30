@@ -1,12 +1,30 @@
 window.handleSend = function(event) {
     event.preventDefault();
     
-    const nameInput = document.getElementById('userName').value.trim();
+    const nameInputEl = document.getElementById('userName');
+    const nameInput = nameInputEl.value.trim();
     const queryInput = document.getElementById('userQuery').value.trim();
     const submitBtn = document.getElementById('submitBtn');
     const successMsg = document.getElementById('successMsg');
+    const nameError = document.getElementById('nameError');
 
-    if (!nameInput) return;
+    // ==========================================
+    // VALIDACIÓN PERSONALIZADA
+    // ==========================================
+    if (!nameInput) {
+        // Hacemos aparecer el texto de error
+        nameError.classList.remove('opacity-0');
+        nameError.classList.add('opacity-100');
+        
+        // Pintamos el borde del input de rojo
+        nameInputEl.classList.remove('border-slate-200', 'focus:border-pink-500');
+        nameInputEl.classList.add('border-red-500', 'focus:border-red-500');
+        
+        // Hacemos que el cursor vaya al input para escribir
+        nameInputEl.focus();
+        
+        return; // Cortamos acá para que no se envíe el WhatsApp
+    }
 
     // ===== AQUÍ PONES TU NÚMERO DE WHATSAPP =====
     const telefono = "5493815974846"; 
@@ -23,7 +41,7 @@ window.handleSend = function(event) {
     const originalContent = submitBtn.innerHTML;
     submitBtn.disabled = true;
     submitBtn.innerHTML = `
-        <svg class="animate-spin -ml-1 mr-2 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <svg class="animate-spin -ml-1 mr-2 h-5 w-5 text-slate-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
           <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
           <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
         </svg>
@@ -47,8 +65,26 @@ window.handleSend = function(event) {
     }, 600);
 };
 
+// ==========================================
+// LIMPIAR ERROR AL EMPEZAR A ESCRIBIR
+// ==========================================
 document.addEventListener('DOMContentLoaded', () => {
     if (window.lucide) {
         lucide.createIcons();
+    }
+
+    const nameInputEl = document.getElementById('userName');
+    const nameError = document.getElementById('nameError');
+
+    if (nameInputEl) {
+        nameInputEl.addEventListener('input', () => {
+            // Volvemos los bordes a la normalidad
+            nameInputEl.classList.add('border-slate-200', 'focus:border-pink-500');
+            nameInputEl.classList.remove('border-red-500', 'focus:border-red-500');
+            
+            // Ocultamos el mensaje de error
+            nameError.classList.add('opacity-0');
+            nameError.classList.remove('opacity-100');
+        });
     }
 });
