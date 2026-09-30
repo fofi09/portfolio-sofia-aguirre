@@ -1,287 +1,1873 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Portfolio Hero Perfecto</title>
     
-<link rel="stylesheet" href="css/estilos.css">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aclonica&family=Inter:wght@400;600;700&family=Lobster&family=Niconne&family=Oleo+Script:wght@400;700&display=swap" rel="stylesheet">
+    
+    <script>
+        /* Asignamos la clase de tamaño al cargar para que las media queries funcionen perfecto */
+        if (window.innerWidth <= 850) {
+            let h = window.innerHeight;
+            if (h <= 719) document.documentElement.classList.add('h-chico');
+            else if (h >= 720 && h <= 839) document.documentElement.classList.add('h-medio');
+            else document.documentElement.classList.add('h-alto');
+        }
+    </script>
+
+    <style>
+        /* ========================================================
+           1. ESTILOS GLOBALES (TU CÓDIGO INTACTO)
+           ======================================================== */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: #FFF5F5;
+            
+            overscroll-behavior-y: none;
+            overscroll-behavior-x: none;
+            overflow-x: clip; 
+        }
+
+        .hero-section {
+            width: 100%;
+            height: 80vh; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 5%;
+            box-sizing: border-box;
+            position: relative; 
+        }
+
+        .hero-wrapper {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: block; 
+        }
+
+        /* ========================================================
+           ESTILOS DEL MENÚ HAMBURGUESA
+           ======================================================== */
+        .main-nav {
+            position: absolute;
+            top: 20px;
+            right: 5%;
+            z-index: 1000;
+        }
+
+        .hamburger-btn {
+            background-color: pink;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease;
+            -webkit-tap-highlight-color: transparent; 
+        }
+
+        .hamburger-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .hamburger-btn svg {
+            width: 24px; 
+            height: 24px;
+            stroke: #c8aaff;
+        }
+
+        .hamburger-btn svg line {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+        }
+        .hamburger-btn svg line:nth-child(1) { transform-origin: 12px 12px; }
+        .hamburger-btn.active svg line:nth-child(1) { opacity: 0; transform: scale(0); }
+        .hamburger-btn svg line:nth-child(2) { transform-origin: 12px 6px; }
+        .hamburger-btn.active svg line:nth-child(2) { transform: translateY(6px) rotate(45deg); }
+        .hamburger-btn svg line:nth-child(3) { transform-origin: 12px 18px; }
+        .hamburger-btn.active svg line:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+        .dropdown-menu {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(255, 255, 255, 0.65); 
+            backdrop-filter: blur(12px); 
+            -webkit-backdrop-filter: blur(12px); 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            list-style: none;
+            padding: 0; margin: 0;
+            z-index: -1; 
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(1.05); 
+            transition: all 0s; 
+            
+            will-change: transform, opacity, visibility;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+
+        .dropdown-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); 
+        }
+
+        .dropdown-menu li { margin: 20px 0; }
+        .dropdown-menu li a {
+            display: block;
+            padding: 10px 25px;
+            color: #000000; 
+            font-family: 'Niconne', cursive; 
+            font-weight: normal; 
+            font-size: 3rem; 
+            text-decoration: none;
+            text-align: center;
+            transition: transform 0.2s, color 0.2s;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .dropdown-menu li a:hover {
+            background-color: transparent; 
+            color: #FF5D8F;
+            transform: scale(1.15); 
+        }
+
+        /* TÍTULO ARRIBA PRIMERO */
+        .hero-title-container {
+            width: 100%;
+            margin-bottom: 1.5rem;
+            position: relative;
+            top: 5px; 
+            text-align: center; 
+        }
+
+        .hero-title {
+            font-family: 'Niconne', cursive; 
+            font-size: clamp(2.6rem, 7vw, 4.6rem); 
+            color: #1a1a2e;
+            margin: 0;
+            line-height: 0.85; 
+            font-weight: normal; 
+            text-align: center; 
+        }
+
+        .hero-title span { color: #FF5D8F; }
+
+        .title-heart {
+            display: inline-block;
+            height: 0.85em; 
+            width: auto;
+            vertical-align: baseline;
+            margin-left: 0.1rem; 
+            transform: translateY(0.05em); 
+            opacity: 0; 
+        }
+
+        /* CONTENEDOR PRINCIPAL QUE ABRAZA CHICA Y TEXTO */
+        .hero-content-body { width: 100%; }
+
+        .hero-avatar-float {
+            float: left;
+            width: 240px; 
+            height: 240px;
+            margin-right: 2.5rem; 
+            margin-bottom: 1rem;
+            margin-top: 40px; 
+            shape-outside: circle(48% at 50% 50%);
+        }
+
+        .avatar-scaler {
+            transform: scale(1.6);
+            transform-origin: top left; 
+        }
+
+        .hero-description {
+            font-size: 1.15rem;
+            color: #5a5a75;
+            line-height: 1.6;
+            margin-top: 0;
+            margin-bottom: 2rem;
+            display: block; 
+            overflow-wrap: break-word;
+            word-break: break-word;
+            -webkit-hyphens: auto;
+            hyphens: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            clear: none; 
+            position: relative;
+            z-index: 10; 
+        }
+
+        .btn {
+            padding: 0.8rem 1.8rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+             background-color: #FF87AB;
+            color: black;
+            box-shadow: 0 6px 15px rgba(65, 50, 201, 0.25);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            background-color:#FFA6C1;
+            box-shadow: #FFA6C1;
+        }
+
+        .btn-secondary {
+            background-color: #FF87AB;
+            color: black;
+        }
+        .btn-secondary:hover {
+            background-color: #FFA6C1;
+            color: black;
+             box-shadow: #FFA6C1;
+            transform: translateY(-3px);
+        }
+
+        .hero-wrapper::after, .hero-content-body::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* ========================================================
+           ¡¡LA ZONA DE CELULARES (TU CÓDIGO INTACTO)!!
+           ======================================================== */
+        
+        @media (max-width: 850px) {
+            .hero-section {
+                /* TU MEDIDA PERFECTA PARA QUE EL ROSA CUBRA LA PANTALLA Y DEJE ASOMAR UN POQUITO */
+                min-height: 85vh !important; 
+                height: auto !important;
+                padding: 75px 5% 80px; 
+                justify-content: flex-start;
+            }
+            
+            .hero-wrapper { display: block; }
+            
+            #Calque_1 { margin-top: -65px !important; height: 125% !important; }
+            .hero-description { text-align: left; }
+            .hero-avatar-float {
+                margin-top: 15px; 
+                margin-bottom: -5px; 
+            }
+
+            .hero-buttons { flex-wrap: nowrap; gap: 0.5rem; }
+            .btn { padding: 0.8rem 0.6rem; font-size: 0.85rem; white-space: nowrap; text-align: center; flex: 1; }
+        }
+
+        @media (max-width: 850px) {
+            html.h-chico .hero-avatar-float {
+                width: 170px; 
+                height: 170px; 
+                margin-left: -15px;
+                margin-right: -10px; 
+                /* AGUIRRE SOFIA AQUI ES CON ESTE VALOR ACERCAS EL TEXTO A LA CHICA. */
+                shape-outside: circle(46% at 45% 50%); 
+            }
+            html.h-chico .avatar-scaler { transform: scale(1.25); }
+            html.h-chico .hero-description { font-size: 1.16rem; }
+        }
+
+        @media (max-width: 850px) {
+            html.h-medio .hero-title { font-size: clamp(2.9rem, 8vw, 4.6rem); }
+            html.h-medio .hero-avatar-float { 
+                width: 215px; 
+                height: 215px; 
+                margin-left: -20px; 
+                margin-right: -10px; 
+                /* AGUIRRE SOFIA AQUI ES CON ESTE VALOR ACERCAS EL TEXTO A LA CHICA. */
+                shape-outside: circle(43% at 45% 50%); 
+            }
+            html.h-medio .avatar-scaler { transform: scale(1.55); }
+            html.h-medio .hero-description { font-size: 1.35rem; }
+            html.h-medio .btn { padding: 0.9rem 2rem; font-size: 1.05rem; }
+        }
+
+        @media (max-width: 850px) {
+            html.h-alto .hero-title { font-size: clamp(3.2rem, 9vw, 4.6rem); }
+            html.h-alto .hero-avatar-float { 
+                width: 250px; 
+                height: 250px; 
+                margin-left: -25px; 
+                margin-right: -10px; 
+                /* AGUIRRE SOFIA AQUI ES CON ESTE VALOR ACERCAS EL TEXTO A LA CHICA. */
+                shape-outside: circle(43% at 45% 50%); 
+            }
+            html.h-alto .avatar-scaler { transform: scale(1.8); }
+            html.h-alto .hero-description { font-size: 1.5rem; }
+            html.h-alto .hero-buttons { margin-top: 1rem; }
+            html.h-alto .btn { padding: 1rem 2.2rem; font-size: 1.1rem; }
+        }
+
+        @media (max-width: 390px) {
+            .hero-avatar-float { margin-right: 0px; }
+        }
+
+        /* ========================================================
+           ZONA DE COMPU Y TABLETS (TU CÓDIGO INTACTO)
+           ======================================================== */
+        @media (min-width: 851px) {
+            .hero-section {
+                height: auto; 
+                min-height: 80vh; 
+                padding-top: 60px; 
+                padding-bottom: 40px;
+            }
+            .hero-title-container {
+                text-align: center;
+                margin-bottom: 0;
+                top: 15px; 
+            }
+            .hero-title { text-align: center; }
+
+            .hero-content-body {
+                display: grid;
+                grid-template-columns: 1fr 1fr; 
+                grid-template-areas: 
+                    "avatar text"
+                    "avatar buttons";
+                column-gap: 0; 
+                align-items: start; 
+                margin-top: 2rem; 
+            }
+
+            .hero-avatar-float {
+                grid-area: avatar;
+                float: none; 
+                shape-outside: none; 
+                width: 100%;
+                height: 350px; 
+                margin: 0;
+                display: flex;
+                justify-content: center; 
+                position: relative;
+                left: -12px; 
+            }
+
+            .avatar-scaler {
+                transform: scale(2.2); 
+                transform-origin: top center; 
+            }
+
+            .hero-description {
+                grid-area: text;
+                margin-top: 2rem; 
+                margin-bottom: 1.5rem;
+                margin-left: -200px; 
+                max-width: 500px;
+                font-size: 1.25rem; 
+            }
+
+            .hero-buttons {
+                grid-area: buttons;
+                justify-content: flex-start; 
+                margin-left: -200px; 
+                margin-top: -70px;
+            }
+        }
+
+        @media (min-width: 851px) and (max-width: 1025px) {
+            .hero-avatar-float { left: -70px; }
+        }
+
+        /* ========================================================
+           SECCIÓN DE SERVICIOS (LA VERSIÓN PERFECTA)
+           ======================================================== */
+        .seccion-siguiente {
+            background-color: #ffffff;
+            background-image: 
+                linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+            background-size: 25px 25px; 
+
+            position: relative; 
+            z-index: 2;
+            
+            display: flex;
+            flex-direction: column; 
+            justify-content: flex-start; 
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+            
+            /* LA CLAVE: 0 padding arriba, el título manda con su margin */
+            padding-top: 0;
+            padding-bottom: 60px;
+            padding-left: 0;
+            padding-right: 0;
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .seccion-siguiente {
+                justify-content: center; 
+            }
+        }
+        
+        @media (min-width: 851px) {
+            .seccion-siguiente {
+                padding-bottom: 80px;
+            }
+        }
+
+        .seccion-titulo {
+            font-family: 'Niconne', cursive; 
+            /* font-size: 1.8rem;  */
+            font-size: calc(72 * var(--unit));
+            font-weight: 400; 
+            color: #1a1a1a;
+            
+            margin-top: 3vh; 
+            margin-bottom: 1vh; 
+            
+            padding: 5px 20px; 
+            border-radius: 12px;
+            text-align: center;
+            z-index: 10;
+        }
+
+        @media (min-width: 768px) {
+            .seccion-titulo {
+                font-size: 2.6rem; 
+                margin-top: 4vh; 
+            }
+        }
+
+        .servicios-wrapper {
+            container-type: inline-size;
+            width: 95%; 
+            max-width: 500px; 
+            
+            aspect-ratio: 1 / 1.85; 
+        
+            position: relative;
+            background-color: transparent; 
+            box-shadow: none; 
+            margin-top: -2vh; 
+        }
+
+        @media (min-width: 768px) {
+            .servicios-wrapper { 
+                aspect-ratio: 3 / 4; 
+                width: 86vh; 
+                max-width: 100%; 
+            }
+        }
+
+        @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+            .seccion-siguiente {
+                background-attachment: scroll !important; 
+                justify-content: flex-start !important;
+                padding-top: 2vh;
+                padding-bottom: 5vh;
+            }
+            .servicios-wrapper {
+                width: 82vw !important; 
+                max-width: 450px !important;
+            }
+        }
+
+        .svg-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .svg-mobile { display: block; }
+        .svg-desktop { display: none; }
+
+        @media (min-width: 768px) {
+            .svg-mobile { display: none; }
+            .svg-desktop { display: block; }
+        }
+
+        .card {
+            position: absolute;
+            width: 70cqw; 
+            background: white;
+            border-radius: 2cqw;
+            padding: 1.2cqw;
+            box-shadow: 0 3cqw 6cqw rgba(0,0,0,0.06), 0 1cqw 2cqw rgba(0,0,0,0.04);
+            z-index: 2;
+        }
+
+        .card-inner {
+            border-radius: 1cqw;
+            padding: 3cqw 2.5cqw; 
+            max-height: 75cqw; 
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2cqw; 
+            overflow-y: auto;
+            scrollbar-width: none; 
+        }
+
+        .card-inner::-webkit-scrollbar {
+            display: none; 
+        }
+
+        @media (min-width: 768px) {
+            .card {
+                width: 54cqw; 
+            }
+            .card-inner {
+                max-height: 26cqw; 
+            }
+        }
+
+        .cinta {
+            position: absolute;
+            top: -2cqw;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12cqw;
+            height: 3.5cqw;
+            z-index: 3;
+            box-shadow: 0 0.5cqw 1cqw rgba(0,0,0,0.1);
+            clip-path: polygon(2% 0, 98% 2%, 100% 100%, 0 98%);
+        }
+
+        .titulo {
+            font-size: 3.5cqw; 
+            font-weight: 700;
+            color: #1a1a1a;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .lista-servicios {
+            font-size: 2.5cqw; 
+            color: #444;
+            line-height: 1.35;
+            margin: 0;
+            padding-left: 2.5cqw;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6cqw;
+        }
+
+        .lista-servicios li { margin: 0; }
+        .lista-servicios strong { color: #222; }
+
+        .card-1 {
+            top: 10cqw; 
+            left: 2cqw;
+            transform: rotate(-3deg);
+        }
+        .card-1 .card-inner { background-color:  #fcebf0; }
+        .card-1 .cinta { background-color: rgba(238, 76, 126, 0.9); transform: translateX(-50%) rotate(-4deg); }
+
+        .card-2 {
+            top: 65cqw; 
+            right: 2cqw;
+            transform: rotate(4deg);
+        }
+        .card-2 .card-inner { background-color: #fcebf0; }
+        .card-2 .cinta { background-color: rgba(238, 76, 126, 0.9); transform: translateX(-50%) rotate(3deg); }
+
+        .card-3 {
+            top: 120cqw; 
+            left: 4cqw;
+            transform: rotate(-2deg);
+        }
+        .card-3 .card-inner { background-color: #fcebf0; }
+        .card-3 .cinta { background-color: rgba(238, 76, 126, 0.9); transform: translateX(-50%) rotate(-5deg); }
+
+        @media (min-width: 768px) {
+            .card-1 { top: 10cqw; left: 3cqw; }
+            .card-2 { top: 42cqw; right: 3cqw; }
+            .card-3 { top: 74cqw; left: 6cqw; }
+        }
+
+        /* ========================================================
+           TU CSS ORIGINAL INTACTO DE LA CHICA Y ANIMACIONES
+           ======================================================== */
+        .animation-container {
+          --support-size: 150px; 
+          position: relative;
+          width: var(--support-size);
+          height: var(--support-size);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          -webkit-tap-highlight-color: transparent;
+          -webkit-touch-callout: none;
+          user-select: none;
+        }
+
+        @keyframes waveAnimation {
+          0%, 100% { transform: rotate(0deg); }
+          50% { transform: rotate(15deg); }
+        }
+
+        @keyframes bounceEntrance {
+          0% { opacity: 0; transform: translateY(50px) scale(0.9); }
+          50% { opacity: 1; transform: translateY(-15px) scale(1.02); }
+          75% { transform: translateY(8px) scale(0.99); }
+          100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .st-hair { fill: #261a15; }
+        .st2 { fill: #f9c8a7; }
+        .st3 { fill: #ff9e97; }
+        .st5 { fill: #261a15; }
+        .st6 { fill: #d72e48; }
+        .st7 { fill: #ffffff; }
+        .st8 { fill: #ff8d7f; }
+        .st10 { fill: #111111; }
+        .st11 { fill: #1a1a1a; }
+        .st12 { opacity: 0.2; }
+        .st-shirt { fill: #ffffff; }
+        .st-shirt-shadow { fill: #e2e2e2; }
+        
+        #Calque_1 {
+          display: block;
+          height: 100%;
+          width: auto;
+          margin-top: -30px; 
+          opacity: 0; 
+          animation: bounceEntrance 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+          
+          /* OPTIMIZACIÓN: Usa la placa de video para el salto inicial */
+          will-change: transform, opacity;
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
+        }
+        
+        #left_x5F_arm_2_ {
+          transform-origin: 230px 160px; 
+          
+          /* OPTIMIZACIÓN: 60fps clavados para el saludo del brazo */
+          will-change: transform;
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
+        }
+
+        #loader-wrapper {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #FFF5F5; 
+            z-index: 999999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none; 
+        }
+
+        #loader-heart-mover {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform-origin: center center;
+            will-change: transform; 
+            
+            position: relative;
+            top: -7px; 
+        }
+
+        .loader-heart-svg {
+            width: 140px; 
+            height: auto;
+        }
+
+        .mask-path {
+            stroke-dasharray: 100;
+            stroke-dashoffset: 100;
+            animation: drawMask 4.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            
+            will-change: stroke-dashoffset;
+        }
+
+        @keyframes drawMask {
+            0% { stroke-dashoffset: 100; }
+            100% { stroke-dashoffset: 0; }
+        }
+
+        /* ========================================================
+           SECCIÓN DE PROYECTOS
+           ======================================================== */
+        .niconne-regular {
+          font-family: "Niconne", cursive;
+          font-weight: 400;
+          color: #1a1a2e;
+        }
+
+        #projects-section {
+            /* //soff aqui termina fondo CUADRICULADO */
+            margin-top: -20vh; 
+            z-index: 5;
+
+           
+         
+         /* background-color: #FFF5F5; */
+        /* background-color: #fcebf0;   */
+       /*  background-color: #ffe9ef;*/
+           background-color:  #FFF5F5;
+        
+        }
+    
+        @media (max-width: 850px) {
+            #projects-section {
+                /* //soff aqui termina fondo CUADRICULADO */
+                margin-top: -15vh; 
+            }
+        }
+
+        /* 1 */
+        /* ========================================================
+           SECCIÓN DE EDUCACIÓN Y CERTIFICADOS
+           ======================================================== */
+      /* ========================================================
+           SECCIÓN DE EDUCACIÓN Y CERTIFICADOS
+           ======================================================== */
+        #educacion-section {
+            --unit: calc(100vw / 270);
+            font-family: 'Inter', sans-serif;
+            /* background-color: #f8fafc; */
+
+           /* background-color: #fcebf0;*/
+            /* background-color: #ffe9ef; */
+
+             background-color:  #FFF5F5;
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+            z-index: 10; 
+        }
+
+        @media (min-width: 768px) {
+            #educacion-section {
+                --unit: 1px;
+            }
+        }
+
+        .edu-wrapper {
+            display: flex;
+            align-items: flex-start;
+            /* Este 15vh queda de forma predeterminada (aplica a celus MUY chiquitos y tablets) */
+            padding: 15vh calc(10 * var(--unit)) 40px;
+            gap: calc(12 * var(--unit));
+            /* min-height: 100vh; */
+             min-height: auto;
+            max-width: 100vw;
+            box-sizing: border-box;
+        }
+
+        /* --- REGLA EXCLUSIVA PARA CELULARES MEDIANOS Y GRANDES (Desde 380px hasta 767px) --- */
+        @media (min-width: 380px) and (max-width: 767px) {
+            .edu-wrapper {
+                /* //SOFFF aqui es donde se sube en celus. */
+                padding-top: 6vh; 
+            }
+        }
+
+        .edu-sidebar {
+            writing-mode: vertical-lr;
+            transform: rotate(180deg);
+            white-space: nowrap;
+            color: black;
+            font-weight: 700;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: calc(10 * var(--unit));
+            flex-shrink: 0; 
+        }
+
+        @media (max-width: 767px) {
+            .edu-sidebar {
+                transition: width 0.3s ease, opacity 0.3s ease, margin 0.3s ease;
+                width: calc(85 * var(--unit));
+                overflow: hidden;
+            }
+            .edu-sidebar.collapsed {
+                width: 0;
+                opacity: 0;
+                margin-right: calc(-12 * var(--unit)); 
+            }
+            .edu-blue-line {
+                cursor: pointer;
+                transition: transform 0.2s ease, background-color 0.2s ease;
+            }
+            .edu-blue-line:active {
+                transform: scale(0.95);
+                background: #63b4e2;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .edu-sidebar.collapsed {
+                width: auto !important;
+                opacity: 1 !important;
+                margin-right: 0 !important;
+            }
+        }
+
+        .edu-title-text {
+            font-family: "Niconne", cursive;
+            font-size: calc(72 * var(--unit)); 
+            font-weight: 500;
+            line-height: 0.7; 
+            /* color: #1a1a2e; */
+             color: #ff5d8f;
+        }
+
+        .edu-cert-text {
+            font-size: calc(12.8 * var(--unit)); 
+            margin-top: calc(5 * var(--unit));
+            font-family: "Libre Baskerville", serif;
+            font-weight: 400;
+        }
+
+        .edu-blue-line {
+            width: calc(6 * var(--unit));
+            background: #ff87ab;
+            border-radius: 99px;
+            height: calc(250 * var(--unit));
+            flex-shrink: 0; 
+        }
+
+        .edu-carousel {
+            flex-grow: 1;
+            min-width: 0; 
+            overflow-x: auto;
+            display: flex;
+            gap: calc(15 * var(--unit));
+            padding-bottom: 10px;
+            scrollbar-width: none;
+        }
+        .edu-carousel::-webkit-scrollbar { display: none; }
+
+        .edu-card {
+            min-width: calc(260 * var(--unit)); 
+            width: calc(260 * var(--unit));    
+            height: calc(250 * var(--unit));    
+            background: white;
+            border-radius: calc(12 * var(--unit));
+            padding: calc(15 * var(--unit));
+            border: 1px solid #e0e7ff;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column; 
+            flex-shrink: 0; 
+        }
+
+        .edu-img-box {
+            width: 100%;
+            height: calc(120 * var(--unit));
+            background: #dbeafe;
+            border-radius: calc(8 * var(--unit));
+            margin-bottom: calc(12 * var(--unit));
+            overflow: hidden; 
+            flex-shrink: 0; 
+        }
+        
+        .edu-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .edu-img-box img:hover {
+            transform: scale(1.05);
+        }
+
+        .edu-card-title {
+            font-size: calc(14 * var(--unit)); 
+            font-weight: 700; 
+            color: #ff5d8f; 
+            margin: 0;
+        }
+
+        .edu-card-desc {
+            font-size: calc(12 * var(--unit)); 
+            color: #6b7280; 
+            margin-top: calc(4 * var(--unit)); 
+            margin-bottom: 0;
+            line-height: 1.4;
+        }
+
+        .edu-scroll-area {
+            flex-grow: 1;
+            overflow-y: auto;
+            scrollbar-width: none; 
+        }
+        .edu-scroll-area::-webkit-scrollbar { display: none; }
+
+        .edu-modal {
+            display: none; 
+            position: fixed;
+            z-index: 9999999; 
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85); 
+            backdrop-filter: blur(4px); 
+        }
+
+        .edu-modal.show {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease; 
+        }
+
+        .edu-modal-img {
+            width: 100%;
+            height: 100%;
+            max-width: 95vw;
+            max-height: 95vh;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            object-fit: contain; 
+            animation: zoomIn 0.3s ease;
+        }
+
+        .edu-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #ffffff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+            transition: color 0.2s ease;
+        }
+        .edu-modal-close:hover { color: #dbeafe; }
+
+        @media (min-width: 1024px) {
+            #educacion-section {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .edu-wrapper {
+                width: 900px;
+                min-height: auto;
+                height: auto;
+                justify-content: center;
+                /* En compu se mantiene tu padding fijo, no se rompe nada */
+                padding: 40px 10px; 
+            }
+        }
+        /* ========================================================
+           AJUSTE DE ESPACIADO SOLO PARA PC GRANDE Y TELEVISORES
+           ======================================================== */
+        @media (min-width: 1600px) {
+            #educacion-section {
+                /* //SOFF aqui ajustas cuánto sube Educación solo en PC grandes y teles */
+                margin-top: -15vh !important; 
+            }
+        }
+        /* scroll en pc y teel si no te gsuta solo borras esto de abajp, no hay nada en index ni nada es solo aqui */
+        /* ========================================================
+           SCROLLBAR VISIBLE EN EDUCACIÓN SOLO PARA PC Y TELE
+           ======================================================== */
+        @media (min-width: 1441px) {
+            .edu-carousel {
+                /* Restauramos el scroll para Firefox */
+                scrollbar-width: thin; 
+                scrollbar-color: rgba(156, 163, 175, 0.5) rgba(0,0,0,0.05);
+                
+                /* //SOFF: le damos un pelín más de padding abajo para que la barra no pise tus tarjetas */
+                padding-bottom: 25px; 
+            }
+            
+            /* Restauramos el scroll para Chrome, Edge y Safari */
+            .edu-carousel::-webkit-scrollbar { 
+                display: block; 
+                height: 10px; /* Grosor de la barrita horizontal */
+            }
+            .edu-carousel::-webkit-scrollbar-track {
+                background: rgba(0,0,0,0.05);
+                border-radius: 9999px;
+            }
+            .edu-carousel::-webkit-scrollbar-thumb {
+                background: rgba(156, 163, 175, 0.5); /* El gris semi-transparente de tus otras barras */
+                border-radius: 9999px;
+            }
+            .edu-carousel::-webkit-scrollbar-thumb:hover {
+                background: rgba(156, 163, 175, 0.8);
+            }
+        }
+
+        /* 2 */
+        /* ========================================================
+           TU SEPARADOR
+           ======================================================== */
+        .stripe-divider {
+            width: 100%;
+            height: 36px;
+            background-color: #FAF0F4;
+            background-image: repeating-linear-gradient(
+                90deg,
+                #FDD2E4,
+                #FDD2E4 16px,
+                #FAF0F4 16px,
+                #FAF0F4 32px
+            );
+        }
+
+        /* ========================================================
+           SECCIÓN TECNOLOGÍAS
+           ======================================================== */
+        #tecnologias {
+            /* //SOFF espaciado entre separador y tecnoogias porfisss (en PC y Tablets) */
+            /* La magia: usamos padding en vez de margin para matar el agujero blanco */
+            padding-top: 40px !important; 
+            margin-top: 0 !important; 
+            font-family: 'Plus Jakarta Sans', sans-serif;
+
+              background:linear-gradient(
+                135deg,
+                #ffffff 0%,
+                #FFE5ED 20%,
+                #FFFFFF 40%,
+                #FADDE1 60%,
+                #FFE9EF 80%,
+                #FFFFFF 100%
+                
+            );
+        }
+
+        @media (min-width: 380px) and (max-width: 767px) {
+            #tecnologias {
+                /* //SOFF espaciado entre separador y tecnoogias porfisss (en Celulares) */
+                padding-top: 25px !important; 
+                margin-top: 0 !important;
+            }
+        }
+
+        /* Efectos de Cristal (Glassmorphism) encapsulados */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(229, 231, 235, 0.8);
+        }
+        
+        /* .dark .glass-card {
+            background: rgba(17, 24, 39, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        } */
+
+        /* Animación Hover de las pastillas */
+        .tech-pill {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .tech-pill:hover {
+            transform: translateY(-4px);
+        }
+
+        /* seccion contactos */
+        /* ========================================================
+           SECCIÓN CONTACTOS
+           ======================================================== */
+        .font-nicone {
+            font-family: 'Niconne', cursive !important;
+        }
+
+      .bg-contacto-liso {
+            /* //soff aqui color */
+            /* background-color: #ffd1df;  backround  #FFF5F5  */
+             /*  background-color: #fcebf0;*/
+              background-color: #ffe9ef;
+           
+        }
+
+        /* Renombrado a contacto-glass-card para no romper Tecnologías */
+        .contacto-glass-card {
+          background: linear-gradient(
+                135deg,
+                #ffffff 0%,
+                #FFE5ED 20%,
+                #FFFFFF 40%,
+                #FADDE1 60%,
+                #FFE9EF 80%,
+                #FFFFFF 100%
+            );
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+        }
+
+        .contacto-glass-input {
+            background-color: rgba(255, 255, 255, 0.95);
+            transition: all 0.2s ease-in-out;
+        }
+        .contacto-glass-input:focus {
+            background-color: #ffffff;
+            box-shadow: 0 0 0 4px rgba(236, 72, 153, 0.25);
+        }
+          
+       
+     
+    </style>
 </head>
-<body>
-    
-<div class="contenedor">
-        <!-- encabezado con logo, menú de navegación y perfil -->
-    <header>
 
-        <div class="logo"> 
-            <span>AnSofia</span>
+<body class="bg-white font-sans antialiased">
+
+    <!-- ==========================================
+         LOADER QUE VUELA Y SE DIBUJA
+         ========================================== -->
+    <div id="loader-wrapper">
+        <div id="loader-heart-mover">
+            <svg class="loader-heart-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 220">
+                <defs>
+                    <mask id="draw-mask">
+                        <path class="mask-path" pathLength="100" d="M 100 70 C 40 -30, -20 100, 100 220" fill="none" stroke="white" stroke-width="80" stroke-linecap="round" stroke-linejoin="round" />
+                        <path class="mask-path" pathLength="100" d="M 100 70 C 160 -30, 220 100, 100 220" fill="none" stroke="white" stroke-width="80" stroke-linecap="round" stroke-linejoin="round" />
+                    </mask>
+                </defs>
+                <g mask="url(#draw-mask)">
+                    <path d="M 94 95 C 80 50, 40 20, 15 45 C -10 70, 5 130, 35 160 C 55 180, 75 190, 95 195 C 75 188, 55 175, 38 155 C 18 130, 8 85, 25 55 C 45 25, 75 60, 94 95 Z" fill="#374151" />
+                    <path d="M 90 80 C 105 20, 170 -5, 190 35 C 210 75, 160 135, 130 170 C 115 188, 108 208, 105 220 C 112 195, 125 180, 145 155 C 185 110, 195 60, 175 40 C 155 20, 110 35, 90 80 Z" fill="#374151" />
+                </g>
+            </svg>
         </div>
-            <!-- estos son los enlaces internos -->
-        <nav>
-            <a href="#proyectos">Proyectos</a>
-              <a href="#experiencia">Experiencia</a>
-             <a href="#habilidades">Habilidades</a>
-              <a href="#sobre-mi">sobre mi</a>
-             <a href="#contacto">Contacto</a>
+    </div>
+
+    <!-- ==========================================
+         HERO SECTION
+         ========================================== -->
+    <section class="hero-section" style="background-color: #FFF5F5;">
+        
+        <nav class="main-nav">
+            <button class="hamburger-btn" id="menu-toggle" aria-label="Abrir menú">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+            <ul class="dropdown-menu" id="dropdown-menu">
+                <li><a href="#seccion-siguiente">Servicios</a></li>
+                <li><a href="#projects-section">Proyectos</a></li>
+                <li><a href="#educacion-section">Estudios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
         </nav>
-        <div class="perfil">
+
+        <div class="hero-wrapper">
+            
+            <div class="hero-title-container">
+                <h1 class="hero-title">
+                    Construyo tus webs<br>
+                    <span>con estilo propio.</span>
+                    <svg class="title-heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 220">
+                        <path d="M 94 95 C 80 50, 40 20, 15 45 C -10 70, 5 130, 35 160 C 55 180, 75 190, 95 195 C 75 188, 55 175, 38 155 C 18 130, 8 85, 25 55 C 45 25, 75 60, 94 95 Z" fill="#374151" />
+                        <path d="M 90 80 C 105 20, 170 -5, 190 35 C 210 75, 160 135, 130 170 C 115 188, 108 208, 105 220 C 112 195, 125 180, 145 155 C 185 110, 195 60, 175 40 C 155 20, 110 35, 90 80 Z" fill="#374151" />
+                    </svg>
+                </h1>
+            </div>
+
+            <div class="hero-content-body">
+                
+                <div class="hero-avatar-float">
+                    <div class="avatar-scaler">
+                        <div class="animation-container" id="sofia-container">
+                            <svg id="Calque_1" viewBox="0 0 377 270" xmlns="http://www.w3.org/2000/svg">
+                                <g id="phone">
+                                  <g id="caractere_x5F_1">
+                                    <path id="right_x5F_hair" class="st-hair" d="M199,87.1c-0.9-2.6-1.2-5.3-1.2-8.2c0.2,0.4,0.3,0.8,0.5,1.1c1.4,3.1,2.9,5.8,4.4,8 c-1.2-2.8-2.6-6.9-3.2-12.1c-0.4-4.6,0-8.5,0.5-11.3c2.2-10.3,4.6-21.2-1.6-31.5c-10.9-18.3-33.6-8.4-33.6-8.4L151,110.2 C 160,135 170,150 175,150 C 185,150 195,115 199,87.1z"></path>
+                                    <g id="neck_2_">
+                                      <path id="neck_x5F_and_x5F_shoulder" class="st2" d="M175.4,146.4c-12.7,2.3-56.5-13-69.2-11c-1.1-8.3,6.2-16.7,9.8-19.2 c10-6.9,28,4.2,27.3-17.8c-0.8-22.9-1.6-28.3-1.6-28.3l26.2,17.5c0,0-5.6,8.1,0,19.7c5.2,10.6,23-2,29.8,11 C180.1,123.5,193.3,143.2,175.4,146.4z"></path>
+                                      <path id="shadow_x5F_head" class="st3" d="M166.8,104.9c-10.9,1.5-20.9-4.5-23.9-14.5c-0.7-16.2-1.2-20.4-1.2-20.4l26.2,17.5 C167.8,87.6,163,94.6,166.8,104.9z"></path>
+                                    </g>
+                                    <g id="face">
+                                        <path id="face_4_" class="st2" d="M188.2,78c-0.5,4.5-2.8,7.9-4,9.8c-1.1,1.7-1,1.1-5.4,6.3c-3.8,4.5-4,5-5.2,5.5 c-1.5,0.6-3.7,0.6-10.4-3.1c-4.9-2.7-8-4.4-11.8-8c-4.2-3.9-11.5-10.6-13.8-21.6c-0.9-4.2-3.3-16.1,23.3-31.2 c0,0,10.4-4.1,18.5,1.2c7.5,5,8.5,14.4,8.7,16.2c0.6,6.2-1.8,8.2-1.1,15.2c0.1,0.5,0.1,1,0.2,1.6l0,0 C187.8,73.4,188.6,74.8,188.2,78z"></path>
+                                        <g>
+                                          <g id="nose"><path class="st4" d="M176.7,63.3c0.9,1.9,1.6,3.8,2.4,5.5c0.4,0.9,0.9,1.8,1.3,2.5c0.5,0.8,1.1,1.5,1.8,1.8l1.3,0.6l-1.2,0.6 c-1.1,0.5-2.1,1-3.2,1.4c-1.1,0.4-2.2,0.8-3.4,0.9c0.5-0.2,1.1-0.5,1.6-0.8s1-0.6,1.5-0.9c1-0.6,2-1.2,2.9-1.8l0.1,1.2 c-1.2-0.4-2-1.3-2.6-2.2c-0.6-0.9-1.1-1.9-1.4-2.9c-0.4-1-0.6-2-0.8-3C176.7,65.4,176.6,64.4,176.7,63.3z"></path></g>
+                                          <g id="left_x5F_eyebrow"><path class="st5" d="M153.1,55.8c0.3-0.7,0.8-1.4,1.3-2s1.1-1.1,1.8-1.6c1.3-0.9,3-1.5,4.7-1.6c1.8-0.1,3.6,0.5,4.9,1.5 c1.4,1,2.4,2.4,2.6,4.1c-1.5-0.7-2.8-1.2-4-1.4c-1.2-0.3-2.3-0.4-3.4-0.4c-1.1,0.1-2.3,0.2-3.6,0.5c-0.6,0.1-1.3,0.3-2,0.5 C154.6,55.5,153.9,55.7,153.1,55.8z"></path></g>
+                                          <g id="right_x5F_eyebrow"><path class="st5" d="M188.6,55.7c-1.2-0.8-2.2-1.3-3.1-1.5c-0.9-0.2-1.6-0.1-2.6,0h-0.3l-0.4,0.1l-0.7,0.2 c-0.5,0.2-1,0.3-1.6,0.4c-0.6,0.2-1.1,0.3-1.8,0.5c-0.6,0.1-1.3,0.3-2,0.3c0.2-0.7,0.6-1.3,1-1.9c0.4-0.6,0.9-1,1.4-1.5 s1.1-0.8,1.7-1.2c0.3-0.2,0.7-0.3,1-0.4l0.5-0.2l0.6-0.1c1.5-0.3,3.4,0,4.6,1.1C188.2,52.7,188.8,54.3,188.6,55.7z"></path></g>
+                                        </g>
+                                        <path id="mouth" class="st5" d="M159.1,79.6c0,0,0.3,3.2,2.5,5.8c0.3,0.4,0.7,0.8,1.1,1.1c1.9,1.6,4.7,2.7,9.1,2.1 c0.5-0.1,0.9-0.2,1.3-0.4c0.4-0.2,0.9-0.4,1.2-0.6c3.4-2.1,3.9-6.4,3.9-6.4s-0.7,0.2-1.8,0.4c-2.8,0.6-8.5,1.1-14.8-1.1 C160.7,80.3,159.9,80,159.1,79.6z"></path>
+                                        <path id="tongue" class="st6" d="M162.7,86.5c1.9,1.6,4.7,2.7,9.1,2.1c0.5-0.1,0.9-0.2,1.3-0.4c-0.3-1.5-2.9-2.7-6-2.7 C165.3,85.5,163.8,85.9,162.7,86.5z"></path>
+                                        <path id="thoot" class="st7" d="M161.6,80.6c0,0.7,0.4,1.6,1.7,1.9c2.5,0.5,8.6,1.4,12.4,0.4c0,0,0.5-0.4,0.7-1.2 C173.6,82.3,167.8,82.9,161.6,80.6z"></path>
+                                        <path id="eye_x5F_right" class="st5" d="M186,63.8c-1.2-0.5-2.1-0.9-3.2-0.9c-1-0.1-2.1,0.1-3.3,0.4c0.3-0.6,0.9-1,1.4-1.3 c0.6-0.3,1.3-0.4,2-0.3C184.2,61.7,185.5,62.5,186,63.8z"></path>
+                                        <path id="eye_x5F_left" class="st5" d="M158.4,62.6c1-1.4,2.9-2.3,4.7-2.1c0.9,0.1,1.8,0.3,2.6,0.8s1.4,1.1,1.9,1.9 c-0.8-0.4-1.5-0.8-2.3-1c-0.8-0.3-1.5-0.4-2.3-0.5s-1.5,0-2.3,0.2C160,62,159.2,62.3,158.4,62.6z"></path>
+                                    </g>
+                                    <path id="hair_x5F_left" class="st-hair" d="M171.3,32.2c0.1-1.7-0.1-3.7-1.1-5.7c-4.5-8.2-21.3-6.8-29.6-5.2 C107,27.8,110,75,115,92 C 117,110 120,135 125,135 C 135,135 140,100 144.6,68.6 c-0.1,1.2-0.1,2.4-0.2,3.7c-0.1,3.5,0.6,6.4,1.1,8.3 c-0.2-2.1-0.6-9.3,4.2-15.8c1.9-2.5,3.9-4.1,5.7-5.2c0.3-0.2,0.6-0.3,0.9-0.5c0.1-0.1,0.2-0.1,0.3-0.2l0,0 C173.4,48.2,171.3,32.2,171.3,32.2z"></path>
+                                    <ellipse id="left_x5F_cheek_2_" transform="matrix(8.249854e-02 -0.9966 0.9966 8.249854e-02 79.3047 221.9763)" class="st8" cx="160.2" cy="67.9" rx="1.3" ry="3.7"></ellipse>
+                                    <path id="right_x5F_cheeck" class="st8" d="M187.3,69.9L187.3,69.9c-0.6,0.1-1.3,0.2-2.1,0.1c-1.6-0.1-2.9-0.7-2.9-1.3 c0.1-0.6,1.4-0.9,3.1-0.8c0.6,0.1,1.2,0.2,1.7,0.3C187.1,68.8,187.2,69.3,187.3,69.9z"></path>
+                                  </g>
+                                  <g id="left_x5F_arm_2_">
+                                    <path class="st3" d="M253.8,129.2c1.8-0.9,3.4-0.4,3.9,0.4c0.4,0.6-0.8,0.8-2.2,2.4c-1.4,1.7-3.4,5.2-3.4,5.2l-2.1-3.8 C249.9,133.4,251.6,130.3,253.8,129.2z"></path>
+                                    <path class="st2" d="M252.4,140.8c-0.4,5.4-0.7,9.3-1.9,13.4c-0.2,0.7-0.8,2.7-1.6,5.1c-0.1,0.3-0.2,0.7-0.3,1 c-0.4,1.1-0.7,2.1-0.9,2.7c0,0.1-0.1,0.2-0.1,0.3c-3.6-2.6-6.1-3-7.7-2.7c-0.4,0.1-1.6,0.3-2.8-0.2c-1-0.4-1.6-1.2-2-1.8 c1.2-1.4,2.1-2.7,2.6-3.6c0.5-1,1.1-2.1,1.3-2.6c0.3-0.7,0.6-1.3,0.8-1.7c-0.1-1-0.3-2-0.4-2.9c-0.4-2.8-0.6-5.5-0.9-8.2 c0,0-1.6-2.2-1.8-2.5c-0.2-0.2-0.7-0.4-0.9-0.9c-0.4-1.8,0.7-3.2,0.7-3.2s-0.4-0.9,0-2.1s1.3-2.2,1.3-2.2s-0.5-2.7,0-3.3 c0.5-0.6,5.4-3.1,6.4-2.8c1,0.3,4.1,5.2,4.1,5.2s-0.3-2.2-0.8-3.4c-0.5-1.2-0.5-2.7-3.8-4.5c-3.8-2.1-3.8-3.7-3.3-4.3 c0.5-0.5,2.9,0.8,4.5,1.6c1.6,0.8,3.1,2.3,5.1,4c2,1.6,1.5,3.1,1.9,4.9c0.5,1.8,0.2,3.6,0.6,4.7 C252.8,131.3,252.9,134.4,252.4,140.8z"></path>
+                                    <path class="st3" d="M237.8,136c0.5,0.1,1.3,2.5,2.2,2.3c0.2-0.1,1.3-0.5,1.3-0.8c0,0-0.9-1.2-1.6-1.7c-0.7-0.5-1.4-1.2-2.1-1.4 c-0.9-0.1-2,0.7-1.7,1.6c0.1,0.4,0,0.7,0.6,1.8c0.4,0.8,1.4,2.2,1.9,2.6c0.4,0.3,0.6-0.7,0.7-1.5 C239.1,138.6,238.1,136.5,237.8,136z"></path>
+                                    <path class="st3" d="M243.3,135c0.4,0-1.6-2.7-1.9-3c-0.6-0.7-1.3-1.7-2.1-2.2c-0.9-0.5-2-0.2-2.5,0.7c-0.3,0.7-0.5,1.6-0.2,2.4 c0.6-1.1,1.2-1.6,2.4-1C240.4,132.5,243.3,135,243.3,135z"></path>
+                                    <path class="st3" d="M244.9,127.7c-0.4-1.1-0.8-1.4-1.3-2.4c-0.2-0.4-0.4-0.9-0.9-0.9c-0.4,0-1.3,0.4-1.7,0.6 c-1.3,0.6-2.9,0.9-3.1,1.1c-0.2,0.2-0.4,1.4,0,2.1c0.3-0.6,1-1.1,1.5-1.2c0.6-0.1,1.2,0.2,1.7,0.4c1,0.5,2,1.4,2.8,2.1 c0.9,0.8,2.4,2.6,2.4,2.6C246.5,130.9,245.2,128.4,244.9,127.7z"></path>
+                                    <g>
+                                      <path class="st9" d="M240.6,137.4h0.1l0,0H240.6z"></path>
+                                      <path class="st3" d="M240.9,151.1c-0.2-0.6-1.9-7.6-0.1-12.6c0.1-0.4,0.5-1.1,0.5-1.1c-3.4,0.5-3,4.1-3,5.6 c0.1,2.2,0.6,5.5,1.5,7.6c0.3,0.7,1.2,2.2,2,2.1C241.4,152.4,241.1,151.6,240.9,151.1z"></path>
+                                    </g>
+                                    <path id="right_x5F_arm_4_" class="st2" d="M248.9,159.3c-0.1,0.7-0.3,1.5-0.6,2.2c0,0-0.2,0.6-0.6,1.5c-0.1,0.1-0.1,0.3-0.1,0.3 c-0.1,0.4-14,34.6-27.3,35.5c-10.5,0.7-24.5-19-29.5-49.2c-1.3-7.7-2.6-15.3-3.9-23c0,0,17.1,2.4,22.2,15.5 c7.1,18.2,12.2,34.6,12.2,34.6c7.4-7.6,10.5-11.9,11.9-14.5c0.6-1.2,1.3-2.4,2-3.6c1.2-1.4,2.1-2.7,2.6-3.6 c0.5-1,1.1-2.1,1.3-2.6c1.6-1.3,4.5-2.2,6.7-1.2C248.1,152.3,249.6,155.6,248.9,159.3z"></path>
+                                    <path id="shadow_x5F_right_x5F_arm_2_" class="st3" d="M221.3,176.7l-3.3,2.8c0,0-1.1-16.2-2.6-20.4L221.3,176.7z"></path>
+                                  </g>
+                                  <path id="skirt_2_" class="st10" d="M211.4,267.9H96.7c0.7-2.3,1.5-4.5,2.3-6.4c6.2-15.6,14.1-23.9,23.3-47.3 c2.6-6.4,4.5-12.3,6.1-17.2c1.2-3.8,2.1-7.1,2.8-9.8c19.9,1.1,39.9,2.2,59.8,3.3c0.6,2.1,1.2,4.3,1.9,6.5 c3.3,11.6,6.5,23.4,9.6,35.5C205.6,244.4,208.6,256.3,211.4,267.9z"></path>
+                                  <path id="back_x5F_left_x5F_arm_2_" class="st3" d="M111.4,188.1c3.9-2.5,6.7-13.2,10.4-37.9c1.2-8,1.7-11.5,1-16.5 c-0.3-2.3-1.6-11.8-7-13.6c-3.6-1.2-7.3,0.8-8,1.2c-8,5.2-8.6,16.5-8.5,38.6c0.1,17.5,0.5,28.3,3.4,29.6 C106.3,191.3,110.8,188.5,111.4,188.1z"></path>
+                                  <g id="chest_1_">
+                                    <g id="chest_4_">
+                                      <g><path class="st11" d="M99.9,140.4c0-1.8,0.2-12.4,8.6-20.2c7.2-6.6,17.7-8.7,27.4-5.6c3.9,7.3,7.6,9.3,10.4,9.7 c3.3,0.4,5.5-1.4,8.2,0.1c3.4,1.9,3.1,6.6,5.1,6.8c1.4,0.1,1.9-2.2,4.1-4.7c4.1-4.4,8.4-2.9,13.1-6.4c1.9-1.4,4.3-4,5.8-8.9 c3.1-0.2,7.4-0.1,12.3,1.5c0,0,0.5,0.1,0.9,0.3c14.4,5.4,18.3,23.5,18.3,23.5c-4.4,5.7-10.2,10-15.1,12.9 c2.7,20.4-8,41.1-8,41.1c-8,1.5-18,2.7-29.6,2.5c-12.2-0.2-22.6-1.9-30.8-3.9c-2.9-11.9-5.8-23.8-8.7-35.7L99.9,140.4z"></path></g>
+                                    </g>
+                                    <g id="shadow_x5F_chest_2_" class="st12">
+                                      <g><path class="st13" d="M141.3,169.8c9.2,4,19.3,6.2,29.2,7.7c8.2,1.2,16.8,2.5,25.1,1.7c-2.2,6.8-4.5,11.3-4.5,11.3 c-10.4,1.9-23.9,3.3-39.5,2c-7.8-0.7-14.8-1.9-20.9-3.3c-2.7-11.2-5.4-22.4-8.1-33.7C126.8,162.2,134,166.6,141.3,169.8z"></path></g>
+                                    </g>
+                                  </g>
+                                  <g id="right_x5F_arm_1_">
+                                    <path class="st2" d="M111.6,147.8c1.3,8.4,2.2,8.5,3.4,18c0.8,6.5,0.2,10.7-1.2,15.1c-0.9,2.9-1.2,6-4.9,8 c-0.6,0.3-3.4,2.3-7.5,0.7c-0.6-0.2-5.8-4.1-7.5-15.3c-0.9-6.1-0.6-21.9,2.7-35.2c4-16.7,3.4-14,4.9-19 c1.5-4.9,1.9-13.4,7.3-14.6c1.8-0.4,3.7,1,4.6,2.4c1.2,1.9-0.2,4-0.7,7.3C110.3,128.8,110.3,139.2,111.6,147.8z"></path>
+                                    <path class="st3" d="M114.5,93.9c0.7-2.5,2.1-4.4,2.7-6.9c0-0.2,0.1-0.8,0.6-1.2c1.2-0.9,3.9-1.2,6.7-2.7 c0.3-0.2,2.2-1.4,2.7-1.1c0.4,0.3,0.8,0.9,0.7,1.4c-0.1,0.3,0,1.5-1.5,2.5c-2.5,1.6-5.4,2.3-5.7,2.6c-0.6,0.5-0.1,2.4-0.1,3.2 c-0.1,6-3.3,7.1-3,9.7c0.1,0.5,0.3,1.4,0.9,1.6c0.9,0.4,1.6,0.1,4.3-1c0.5-0.2,6.1-2.5,7.3-0.9c0.4,0.6-0.1,1.6-0.7,2 c-0.5,0.3-2.3,1.3-4.1,2c-2.6,1.1-3.1,1.3-4.1,2c-1,0.8-0.8,0.4-1.9,1.7c-1.6,1.9-3.7,2.8-4.8,3.2c-1.9,0.7-4.5,0.6-5.8-0.5 c-1.2-1.1-0.5-2.4,0.4-5.6C111.2,99.3,113.1,99.3,114.5,93.9z"></path>
+                                    <path class="st2" d="M126.2,96.5c0.3,0,0.8-0.1,1.4,0c0.6,0.1,1,0.4,1.9,0.8c2.1,1.2,1.9,0.9,2.3,1.2c1,0.8,0.8,1.2,1.9,2.1 c0.5,0.4,1.9,1.1,3.3,0.2c0.5-0.3,0.2-1.1,0.2-1.2c-0.1-0.4-0.3-0.6-1.2-1.7c-0.7-0.8-0.9-1.1-0.8-1.2c0.1-0.1,1.2,0.2,1.2-0.8 c0-0.5-0.3-0.9-0.8-1.4c-1.7-1.9-1.9-2.5-3.1-3.3c-0.2-0.1-0.7-0.5-1.9-0.8c-3.1-0.8-4.8-2.1-6.2-1.7c-1.4,0.4-10.4,3.2-11,3.5 c-1.1,0.6-1.5,1.7-1.7,2.1c-1.4,3.5-2.6,4.4-5.8,11.6c-1.3,2.8-1.8,3.9-1.3,5c0.7,1.3,2.4,1.6,3.3,1.8c0.4,0.1,2.9,0.6,5-0.8 c1-0.7,1.5-1.6,2.5-3.3c1.7-3.1,1.7-4.7,3.1-5.4c0.1-0.1,1-0.5,2.3-0.8c0.4-0.1,0.7-0.2,0.8-0.2c1.7-0.2,4.1,0.5,4.4,0.6 c0.4,0.1,1.5,1.3,4.8,3.1c0.4,0.2,2.3,1.2,3.1,0.4c0.4-0.4,0.2-1,0.2-1c-0.2-0.7-1-1.1-1.7-1.4c-2-1.1-1.6-2-3.9-3.5 c-0.7-0.5-1.4-0.9-2.3-1.2c-3.1-1.2-5.2-0.2-5.4-1C120.6,97.4,122.9,97,126.2,96.5z"></path>
+                                  </g>
+                                </g>
+                                <g id="white-shirt">
+                                    <path id="shirt" class="st-shirt" d="M191,190.5c-5.2,1-11.1,1.8-17.6,2.2c-0.7-9.1-1.3-18.1-2-27.2v-18.8l1.1-19.1l-4-8 c-1.2,0.6-2.6,1.4-4.1,2.7c-0.7,0.6-1.3,1.2-1.8,1.8c-0.4,0.4-1,0.9-1.5,1.6c-0.8,1.1-1.3,2.2-1.5,3c-0.3-0.8-0.9-2-2-3.1 c-0.6-0.6-1.2-1.1-1.7-1.4c-1.5-1.8-2.9-3.5-4.4-5.3l-3.3,7.5l4.9,22.1l0.8,18.6c-1.3,8.4-2.5,16.8-3.8,25.2c0.1,0,0.2,0,0.2,0 l0,0c-7.2-0.7-13.8-1.9-19.6-3.2c-1.7,5.5-3.3,11-5,16.5c8.3,2.1,19.3,4.1,32.1,4.3c15.4,0.2,28.2-2.2,37.5-4.7 C193.8,200.3,192.4,195.4,191,190.5z"></path>
+                                    <path id="left_x5F_shadow" class="st-shirt-shadow" d="M135.7,107.1l4.3,6.8l3.7-0.4l-0.2-0.6c0,0,0.7-1.3,1.4-2.9c0.6-1.1,0.7-4.2,0.8-5.9 L135.7,107.1z"></path>
+                                    <path id="shadow_x5F_right" class="st-shirt-shadow" d="M179,104.9l-12.9-2.1c0,0,1.2,5.4,3.9,7.3c2,1.4,2.9,1.4,2.9,1.4L179,104.9z"></path>
+                                    <path id="right_x5F_collar" class="st-shirt" d="M184.8,109.7c-1.9-1.6-3.9-3.2-5.8-4.8c-4.4,4.8-8.8,9.5-13.1,14.2l-1.9,9.5l4.5-4.5 l4.2,7.9C176.7,124.6,180.8,117.1,184.8,109.7z"></path>
+                                    <path id="left_x5F_collar" class="st-shirt" d="M135.6,107l-6.1,4.2l17.8,20.8c1.2-3,2.5-6,3.8-8.9c2.2,2,4.5,3.9,6.7,5.9 c-2.1-3.4-4.2-6.8-6.3-10.1C146.2,114.9,140.9,111,135.6,107z"></path>
+                                    <path id="front_x5F_left_x5F_collar" class="st-shirt-shadow" d="M147.4,132c1.4-4.4,2.8-8.8,4.1-13.1c2,2.2,4.1,4.5,6.1,6.7 c-1.6-0.8-3.2-1.6-4.8-2.4c-0.6,0.8-1.2,1.7-1.9,2.6C149.5,128,148.3,130.1,147.4,132z"></path>
+                                    <path id="front_x5F_right_x5F_collar" class="st-shirt-shadow" d="M172.7,132c-2.3-4.3-4.6-8.5-6.9-12.8c-1.6,2.1-3.1,4.3-4.7,6.4 c1.5-0.6,2.9-1.3,4.4-2c1,0.7,2.1,1.6,3.1,2.8C170.5,128.5,171.8,130.4,172.7,132z"></path>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="hero-description">
+                    Soy desarrolladora Fullstack. Me especializo en construir interfaces limpias, fluidas y responsivas. Escribo código estructurado pensando siempre en el usuario final, para crear productos que realmente de gusto utilizar.
+                </p>
+                
+                <div class="hero-buttons">
+                    <button onclick="window.location.href='#projects-section'" class="btn btn-primary">Ver mis proyectos</button>
+                    <button onclick="window.location.href='#contacto'" class="btn btn-secondary">Contactar</button>
+                </div>
+
+            </div>
         </div>
-      
-    </header>
+    </section>
 
-    <main>
-    
-    <section class="seccion-hero">
-        <div class="contenido-hero">
-            <span>hola, soy sofia</span>
-              <h1>Desarrolladora <br> fullstack <img src="imagenes/codificacion.png" alt="Icono de una computadora" class="icono-titulo"></h1>
-             <p>Estudiante de programacion en la UTN-FRT. Te ayudo a construir sitios webs que tus usuarios amarán.</p>
- 
-            <div class="botones">
-    <div class="grupo-botones">
-        <a href="#contacto">contactarme</a>
-        <a href="#proyectos">mis proyectos</a>
-    </div>
-    
-      <!-- íconos con enlaces a mis redes sociales -->
-    <div class="iconos-hero">
-         <a href="https://wa.me/5493815974846?text=Hola%20Sofia%2C%20vi%20tu%20portafolio%20y%20quiero%20contactarte" target="_blank">
-           <img src="iconos/wpRosa.png" alt="WhatsApp color rosa">
-         </a>
+    <!-- ==========================================
+         SECCIÓN SERVICIOS (INTACTA CON SU CUADRÍCULA)
+         ========================================== -->
+    <section id="seccion-siguiente" class="seccion-siguiente">
+        
+        <h1 class="text-5xl sm:text-6xl text-gray-800 mb-2 niconne-regular seccion-titulo">Servicios</h1>
 
-        <a href="https://github.com/fofi09" target="_blank"><img src="iconos/githubRosa.png" alt="github icono rosa"></a>
+        <div class="servicios-wrapper">
+            
+            <svg class="svg-lines svg-mobile" viewBox="0 0 100 185" preserveAspectRatio="none">
+                <path 
+                    d="M 35,40 C 75,40 82,60 82,85 C 82,110 50,115 38,135" 
+                    stroke="#d0d0d0" 
+                    stroke-width="0.3" 
+                    stroke-dasharray="1.5, 1.5" 
+                    fill="none" 
+                    stroke-linecap="round"
+                />
+            </svg>
 
-         <a href="https://mail.google.com/mail/?view=cm&fs=1&to=aguirreanasofia07@gmail.com&su=Consulta%20desde%20tu%20portafolio&body=Hola%20Sofia%2C%20me%20gustaría%20saber%20más%20sobre%20tu%20trabajo." target="_blank">
-    <img src="iconos/gamilRosa.png" alt="icono de Gmail color rosa"></a>
+            <svg class="svg-lines svg-desktop" viewBox="0 0 100 133" preserveAspectRatio="none">
+                <path 
+                    d="M 28,25 C 60,25 72,40 72,55 C 72,70 50,70 34,88" 
+                    stroke="#d0d0d0" 
+                    stroke-width="0.3" 
+                    stroke-dasharray="1.5, 1.5" 
+                    fill="none" 
+                    stroke-linecap="round"
+                />
+            </svg>
 
-    </div>
-</div>
-    <!-- imagen de presentación, (cambia cada vez q se le hace click)-->
+            <div class="card card-1">
+                <div class="cinta"></div>
+                <div class="card-inner">
+                    <h3 class="titulo">Landing pages</h3>
+                    <ul class="lista-servicios">
+                        <li><strong>Informativas:</strong> para presentar una marca, producto o servicio.</li>
+                        <li><strong>De lanzamiento:</strong> para presentar un nuevo producto, app o servicio.</li>
+                        <li><strong>Promocionales:</strong> para promocionar eventos, cursos, talleres o experiencias.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card card-2">
+                <div class="cinta"></div>
+                <div class="card-inner">
+                    <h3 class="titulo">Páginas web</h3>
+                    <ul class="lista-servicios">
+                        <li>Corporativas</li>
+                        <li>Tiendas online</li>
+                        <li>Blogs</li>
+                        <li>Directorios</li>
+                        <li>Webs de reservas</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card card-3">
+                <div class="cinta"></div>
+                <div class="card-inner">
+                    <h3 class="titulo">💻 Aplicaciones web</h3>
+                    <ul class="lista-servicios">
+                        <li><strong>Dashboards:</strong> para visualizar y gestionar datos, estadísticas y métricas.</li>
+                        <li><strong>Sistemas de gestión:</strong> para administrar productos, clientes, turnos, etc.</li>
+                        <li><strong>Sistemas de reservas:</strong> para gestionar citas y disponibilidad.</li>
+                    </ul>
+                </div>
+            </div>
+
         </div>
-          <div class="imagen-hero">
-    <!-- <img id="imagen-hero" src="imagenes/avatar1.png" alt="Foto de perfil"> -->
-
-     <img id="miImagen" src="imagenes/avatar1.png" onclick="cambiarImagen()" alt="Foto de ejemplo">
-    </div>
-
 
     </section>
 
-    <!-- esta es la seccion de los proyectos que realice -->
-    <section class="seccion-proyectos" id="proyectos">
-      <div class="contenedorH">
-         <h2>Proyectos</h2>
-    </div>
-    
-    <div class="contenedor-tarjetas">
-
-
-          <div class="tarjeta-proyecto">
-            <div class="imagen-proyecto">
-                <img src="imagenes/viaje.jpg"  alt="imagen del proyecto agencia de viajes">
-            </div>
-            <div class="info-proyecto">
-                <h3>Agencia de viaje</h3>
-                <p>El sistema permite registrar a los clientes, al hotel y colectiv. Tiene un control de los pagos que van realizando. El administrador puede crear los viajes, activar los descuentos o crear uno nuevo, activar las cuotas sin interes y crear paquetes de viajes. </p>
-              <div class="detalles-proyecto">
-                <span class="fecha-proyecto">25/06/2025</span>
-                <a href="https://github.com/fofi09/agenciaViaje-" target="_blank" class="boton-tarjeta">ver en github</a>
-                </div>
-            </div>
-            </div>
-
-        <div class="tarjeta-proyecto">
-            <div class="imagen-proyecto">
-                <img src="imagenes/slider.jpg"  alt="imagen dek proyecto slider rotativo">
-            </div>
-            <div class="info-proyecto">
-                <h3>Slider Rotativo</h3>
-                <p>Este proyecto tiene un diseño original, moderno y que atrapa al usuario. son 3 sliders que se van mostrando cada 5 segundos, con tematica de auriculares, cada uno con un diseño coherente y personalizado, con imagenes, descripciones, efectos y transiciones</p>
-               <div class="detalles-proyecto">
-                <span class="fecha-proyecto">20/3/2025</span>
-                <a href="https://fofi09.github.io/sliderRotativo1/" target="_blank" class="boton-tarjeta">Ver desplegado</a>
-                </div>
-            </div>
-            </div>
-
-               <div class="tarjeta-proyecto">
-            <div class="imagen-proyecto">
-                <img src="imagenes/monkey.jpg"  alt="imagen del proyecto monkey store">
-            </div>
-            <div class="info-proyecto">
-                <h3>Monkey Store</h3>
-                <p>Es un sistema de compra, venta y facturacion realizado en C# windows Forms. Cuenta con una barra de navegacion fija la cual permite acceder a las diferentes secciones, como ser reportes, caja, clientes, proveedores, entre otras categorias. </p>
-
-                <div class="detalles-proyecto">
-                <span class="fecha-proyecto">01/11/2024</span>
-                <a href="https://github.com/Nether-Ruby/Punto-de-venta_Practicas-profesionales.git" target="_blank" class="boton-tarjeta">Ver en github</a>
-                </div>
-
-            </div>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- seccion de experiencia laboral -->
-
-<section class="seccion-experiencia" id="experiencia">
-    <div class="contenedor-experiencias">
-        <h2>Experiencia laboral</h2>
-        <div class="experiencia">
-            <div class="empresa-info">
-                <h3>encomiensj</h3>
-                <span>Automatizaciones</span>
-                <div class="lenguajes-usados">
-                    <img src="iconos/n8n3.jpg" alt="icono de n8n">
-                    <img src="iconos/n8n2.jpg" alt="logo">
-                </div>
-            </div>
-            <div class="detalles-trabajo">
-                <ul>
-                    <li>Desarrollo automatizaciones con n8n para gmail y bots de Telegram.</li>
-                    <li>Creo flujos para ventas mediante chatbots de WhatsApp.</li>
-                    <li>Optimizo procesos para mejorar la experiencia del cliente.</li>
-                </ul>
-               
-            </div>
-        </div>
-        <div class="experiencia">
-            <div class="empresa-info">
-                <h3>Monkey Store</h3>
-                <span>Desarrolladora backend</span>
-                <div class="lenguajes-usados">
-                    <img src="iconos/cSharp.png" alt="logo de C#">
-                    <img src="iconos/visual1.png" alt="logo de visual">
-                </div>
-            </div>
-            <div class="detalles-trabajo">
-                <ul>
-                    <li>Desarrollé un sistema de gestión integral para ventas y facturación.</li>
-                    <li>Implementé una interfaz de usuario con navegación fija y secciones.</li>
-                    <li>Gestión completa de proveedores, productos y otras categorías clave.</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- esta es la seccion de habilidades -->
-
-<section class="seccion-skills" id="habilidades">
-    <h2>Habilidades</h2>
-    <div class="contenedor-skills">
+    <!-- ==========================================
+         SECCIÓN PROYECTOS (SUBIENDO POR ENCIMA DE LA CUADRÍCULA)
+         ========================================== -->
+    <section id="projects-section" class="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-4 relative overflow-hidden">
         
-        <div class="skill-card">
-            <img class="skill-icon" src="iconos/front.png" alt="icono de frontend">
-            <h3>Frontend</h3>
-            <ul>
-                <li>Html</li>
-                <li>Css</li>
-                <li>Flexbox</li>
-                <li>React</li>
-               
-            </ul>
-        </div>
-        
-        <div class="skill-card">
-            <img class="skill-icon" src="iconos/api.png" alt="icono de backend">
-            <h3>Backend</h3>
-
-             <ul>
-                 <li>Javascript</li>
-                <li>Node js</li>
-                <li>Python</li>
-                <li>Mongo DB</li>
-               
-            </ul>
+        <div class="text-center mb-24 z-40 shrink-0">
+            <h1 class="text-5xl sm:text-6xl text-gray-800 mb-2 niconne-regular">Proyectos</h1>
+            <p class="text-gray-500 text-sm sm:text-base">Desliza o toca para explorar la carpeta</p>
         </div>
 
-        <div class="skill-card">
-            <img class="skill-icon" src="iconos/skilla.png" alt="icono de Skills adicionales">
-            <h3>Skills adicionales</h3>
-            <ul>
-                <li>Organizada</li>
-                 <li>Resolutiva</li>
-                <li>Disiplinada</li>
-                <li>Comunicativa</li>
+        <div 
+            id="folder-container"
+            class="relative w-full max-w-[320px] sm:max-w-[400px] h-[280px] sm:h-[320px] mt-20 sm:mt-16 shrink-0 cursor-grab active:cursor-grabbing"
+            style="-webkit-tap-highlight-color: transparent;"
+        >
             
-                </ul>
+            <div class="absolute inset-0 z-0 flex flex-col justify-end">
+                <div class="w-[40%] h-[15%] bg-[#FF91B4] brightness-90 rounded-t-xl ml-2"></div>
+                <div class="w-full h-[85%] bg-[#FF91B4] brightness-95 rounded-xl rounded-tl-none shadow-inner"></div>
+            </div>
+
+            <div id="cards-container" class="absolute inset-0 z-10"></div>
+
+            <div class="absolute bottom-0 left-0 right-0 h-[65%] z-20 pointer-events-none">
+                <div class="w-full h-full bg-[#FF91B4] rounded-xl shadow-[0_-4px_10px_rgba(0,0,0,0.05)] border-t border-white/50">
+                    <div class="absolute top-2 left-2 right-2 bottom-2 border border-black/20 rounded-lg opacity-30"></div>
+                    <div class="absolute bottom-3 left-5 text-4xl niconne-regular" style="color: #FADDE1;">Soff</div>
+                </div>
+            </div>
+
         </div>
 
-    </div>
-</section>
-      
-<!--  secccion sobre mi -->
-<section class="seccion-sobremi" id="sobre-mi">
-    <div class="contenido-sobremi">
-        <span>Breve historia</span>
-        <h2>Sobre mi</h2>
-         <p class="w">Me llamo sofia aguirre, tengo 20 años</p> 
-        <p class="w">Estudio la tecnicatura en programacion</p>
-        <p class="w">Durante la carrera realizo varios cursos de programacion</p> 
-        <p class="w">Me gusta estar en constante aprendizaje.</p>
-
-        <!-- aqui se puede descargar mi curriculum -->
-        <a href="curriculum/cv.pdf" id="b" download="curriculumSofia.pdf">Descargar curriculum</a>
-        
-
-    </div>
-    <div class="imagen-sobremi">
-        <img src="imagenes/sobremi.jpg" alt="representacion mia, con noteebok y un cafe">
-    </div>
-    
-</section>
-
-</main>
-
-<!-- footer -->
-<footer id="contacto">
-     <!-- menú vertical en el footer -->
-    <div class="contenedor-footer">
-        <div class="footer-nav-vertical">
-            <a href="#proyectos">Proyectos</a>
-            <a href="#experiencia">Experiencia</a>
-            <a href="#habilidades">Habilidades</a>
-            <a href="#sobre-mi">Sobre mí</a>
+        <div id="dots-container" class="flex items-center justify-center gap-3 mt-12 sm:mt-16 lg:-translate-y-8 z-30 shrink-0 min-h-[48px]">
         </div>
+    </section>
 
-        <div class="footer-tecnologias">
-                     <!-- logo de las tecnologias que se,para agregar elemntos en la pagina-->
-            <h4>Tecnologías:</h4>
-            <div class="contenedor-iconos">
-                <img src="iconos/html-5.png" alt="Icono de tecnología 1">
-                <img src="iconos/css.png" alt="Icono de tecnología 2">
-                <img src="iconos/javascript.png" alt="Icono de tecnología 3">
-                <img src="iconos/nodeJs.png" alt="Icono de tecnología 4">
-                <img src="iconos/python.png" alt="Icono de tecnología 1">
-                <img src="iconos/cSharp.png" alt="Icono de tecnología 2">
+    <!-- 1 -->
+   
+   <!-- ==========================================
+         SECCIÓN EDUCACIÓN Y CERTIFICADOS
+         ========================================== -->
+    <section id="educacion-section">
+        <div class="edu-wrapper">
+            <div class="edu-sidebar">
+                <span class="edu-cert-text">CERTIFICADOS</span>
+                <span class="edu-title-text">Educacion</span>
+            </div>
+
+            <div class="edu-blue-line"></div>
+
+            <div class="edu-carousel">
+                <!-- Estudio 1 -->
+                <div class="edu-card">
+                    <div class="edu-img-box">
+                        <img src="utnSof.jpg" alt="Imagen 1">
+                    </div>
+                    <div class="edu-scroll-area">
+                        <h3 class="edu-card-title">Tecnica Universitaria en Programación</h3>
+                        <p class="edu-card-desc">Recibida. promedio 8.60 <br> Empecé la carrera de programación en abril 2023 y me recibí en marzo 2025.</p>
+                    </div>
+                </div>
+
+                <!-- Estudio 2 -->
+                <div class="edu-card">
+                    <div class="edu-img-box">
+                        <img src="certificadoIA1.jpg" alt="Imagen 2">
+                    </div>
+                    <div class="edu-scroll-area">
+                        <h3 class="edu-card-title">Curso Fundamentos de Ingeniero IA con Python</h3>
+                        <p class="edu-card-desc">Este curso empezo en junio y terminó en septiembre 2025. Las clases fueron 2 veces por semana, con trabajos practicos evaluativos.</p>
+                    </div>
+                </div>
+
+                <!-- Estudio 3 -->
+                <div class="edu-card">
+                    <div class="edu-img-box">
+                        <img src="CertificadoSofFull1.jpg" alt="Imagen 3">
+                    </div>
+                    <div class="edu-scroll-area">
+                        <h3 class="edu-card-title">Professional Full Stack</h3>
+                        <p class="edu-card-desc">Este curso empezó en junio y terminó en septiembre 2025. Las clases fueron 2 veces por semana, con trabajos practicos evaluativos.</p>
+                    </div>
+                </div>
+
+                <!-- Estudio 4 -->
+                <div class="edu-card">
+                    <div class="edu-img-box">
+                        <img src="certificadoDatos1.jpg" alt="Imagen 4">
+                    </div>
+                    <div class="edu-scroll-area">
+                        <h3 class="edu-card-title">Ciencia de datos</h3>
+                        <p class="edu-card-desc">Este curso de la UTN-BA impulsado por la Franja-morada empezó en junio del 2025 y terminó en septiembre del mismo año.</p>
+                    </div>
+                </div>
+
+                <!-- Estudio 5 -->
+                <div class="edu-card">
+                    <div class="edu-img-box">
+                        <img src="certificadoGo2.jpg" alt="Imagen 5">
+                    </div>
+                    <div class="edu-scroll-area">
+                        <h3 class="edu-card-title">Programación en Go</h3>
+                        <p class="edu-card-desc">Este curso de Platzi me ayudo a aprender las bases del lenguaje Golang.</p>
+                    </div>
+                </div>
+
+                <!-- Estudio 6 -->
+                <div class="edu-card">
+                    <div class="edu-img-box">
+                        <img src="certificadoNucleo.jpg" alt="Imagen 6">
+                    </div>
+                    <div class="edu-scroll-area">
+                        <h3 class="edu-card-title">Crea tu propia aplicación con Inteligencia Artificial</h3>
+                        <p class="edu-card-desc">Fueron unas clases muy útiles en donde en vivo se codificó linea por linea de código, creando una mini aplicación con IA.</p>
+                    </div>
+                </div>
+                <!-- nuevo -->
+               
+                <!--  -->
+                   <!-- Estudio 7 -->
+                <div class="edu-card">
+                    <div class="edu-img-box">
+                        <img src="certificadoWeb2.jpg" alt="Imagen ">
+                    </div>
+                    <div class="edu-scroll-area">
+                        <h3 class="edu-card-title">Introducción al mundo web</h3>
+                        <p class="edu-card-desc">En este curso de educacionIT explican todo lo necesario para introducirse a este mundo</p>
+                    </div>
+                </div>
+                   <!-- Estudio 8 -->
+                <div class="edu-card">
+                    <div class="edu-img-box">
+                        <img src="certificadoHtml.jpg" alt="Imagen ">
+                    </div>
+                    <div class="edu-scroll-area">
+                        <h3 class="edu-card-title">Curso de HTML y CSS</h3>
+                        <p class="edu-card-desc">En este curso completo de TodoCode enseñan de manera práctica todo, proporcionan ejercicios para practicar cada cosa.</p>
+                    </div>
+                </div>
+
+                <!-- Estudio 9 -->
+                <div class="edu-card">
+                    <div class="edu-img-box">
+                        <img src="certificadoC.jpg" alt="Imagen 7">
+                    </div>
+                    <div class="edu-scroll-area">
+                        <h3 class="edu-card-title">Curso de C#.NET</h3>
+                        <p class="edu-card-desc">En este curso de educacionIT me enseñaron la lógica de programación, a enteder el por qué de cada cosa.</p>
+                    </div>
+                </div>
             </div>
         </div>
-        
-        <!-- este es el formulario de contacto -->
-        <div class="formulario-contacto">
-            <h4>Si te interesa trabajar conmigo, no dudes en contactarme.</h4>
-            <form id="formulario">
-                <input type="text" id="nombre" placeholder="Nombre completo" maxlength="30">
-                <input type="email" id="email" placeholder="Email">
-                <textarea id="descripcion" placeholder="Cualquier pregunta o idea que tengas (opcional)"></textarea>
-                <p id="mensaje-formulario"></p>
-                <button type="submit" class="boton-primario">Enviar</button>
 
-                <div class="grupo-botones">
-    
-</div>
-            </form>
+        <div id="imageModal" class="edu-modal">
+            <span class="edu-modal-close" id="closeModalBtn">&times;</span>
+            <img class="edu-modal-img" id="expandedImg" src="" alt="Certificado Ampliado">
         </div>
-    </div>
-</footer>
 
-</div> 
+        
+    </section>
+    
+    <!-- ==========================================
+         AQUÍ TERMINA EDUCACIÓN
+         ========================================== -->
 
+    <!-- abajo va separador y tecnologias -->
+  
+    <!-- ==========================================
+         EL SEPARADOR DE SOFF
+         ========================================== -->
+    <div class="stripe-divider"></div>
 
-<script src="js/app.js"></script>
+             
+    <!-- 2 -->
+     <!-- ==========================================
+         SECCIÓN TECNOLOGÍAS (CON SUS PROPIAS LIBRERÍAS)
+         ========================================== -->
+    <!-- Librerías cargadas solo para esta sección -->
 
+  <!-- ==========================================
+         LIBRERÍAS DE TECNOLOGÍAS 
+         ========================================== -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- ==========================================
+         SECCIÓN TECNOLOGÍAS
+         ========================================== -->
+    <!-- Mismo color de fondo que tu body para aislarlo y que no sea negro -->
+    <section id="tecnologias" class="relative pt-6 pb-12 sm:pt-10 sm:pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden bg-slate-50 text-slate-800">
+        
+        <!-- Subtle Ambient Background Glows -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-slate-300/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-10 right-10 w-80 h-80 bg-slate-300/20 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-5xl mx-auto relative z-10">
+            
+            <!-- SECTION HEADER -->
+            <div class="text-center mb-6 sm:mb-8">
+                <!-- Título igual que Proyectos -->
+                <h2 class="text-5xl sm:text-6xl text-gray-800 mb-2 niconne-regular select-none">
+                    Tecnologías
+                </h2>
+                
+                <p class="mt-1 sm:mt-2 max-w-xl mx-auto text-xs sm:text-sm md:text-base text-slate-600 font-normal">
+                    Herramientas, lenguajes y frameworks con los que construyo soluciones digitales fluidas y escalables.
+                </p>
+            </div>
+
+            <!-- CATEGORY FILTER TABS -->
+            <div class="flex justify-center mb-6 sm:mb-8">
+                <div class="flex flex-wrap justify-center gap-1.5 p-1.5 bg-slate-200/60 rounded-2xl border border-slate-300/40">
+                    <button class="filter-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all bg-white text-slate-900 shadow-sm" data-category="all">
+                        Todas
+                    </button>
+                    <button class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium text-slate-600 hover:text-slate-900 transition-all" data-category="frontend">
+                        Frontend
+                    </button>
+                    <button class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium text-slate-600 hover:text-slate-900 transition-all" data-category="backend">
+                        Backend
+                    </button>
+                    <button class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium text-slate-600 hover:text-slate-900 transition-all" data-category="database">
+                        Bases de Datos
+                    </button>
+                    <button class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium text-slate-600 hover:text-slate-900 transition-all" data-category="tools">
+                        Herramientas
+                    </button>
+                </div>
+            </div>
+
+            <!-- PILLS CONTAINER -->
+            <div id="pillsContainer" class="flex flex-wrap justify-center gap-3 sm:gap-3.5 max-w-4xl mx-auto">
+                
+                <!-- Frontend Pills -->
+                <div class="tech-pill glass-card px-4 py-2.5 rounded-full flex items-center gap-2.5 text-xs sm:text-sm font-medium text-slate-800 hover:border-slate-400 hover:shadow-md hover:-translate-y-0.5 transition-all cursor-default select-none group" data-category="frontend">
+                    <i class="devicon-html5-plain text-lg text-slate-900 group-hover:scale-110 transition-transform"></i>
+                    <span>HTML5</span>
+                </div>
+
+                <div class="tech-pill glass-card px-4 py-2.5 rounded-full flex items-center gap-2.5 text-xs sm:text-sm font-medium text-slate-800 hover:border-slate-400 hover:shadow-md hover:-translate-y-0.5 transition-all cursor-default select-none group" data-category="frontend">
+                    <i class="devicon-css3-plain text-lg text-slate-900 group-hover:scale-110 transition-transform"></i>
+                    <span>CSS3</span>
+                </div>
+
+                <div class="tech-pill glass-card px-4 py-2.5 rounded-full flex items-center gap-2.5 text-xs sm:text-sm font-medium text-slate-800 hover:border-slate-400 hover:shadow-md hover:-translate-y-0.5 transition-all cursor-default select-none group" data-category="frontend">
+                    <i class="devicon-javascript-plain text-lg text-slate-900 group-hover:scale-110 transition-transform"></i>
+                    <span>JavaScript</span>
+                </div>
+
+                <div class="tech-pill glass-card px-4 py-2.5 rounded-full flex items-center gap-2.5 text-xs sm:text-sm font-medium text-slate-800 hover:border-slate-400 hover:shadow-md hover:-translate-y-0.5 transition-all cursor-default select-none group" data-category="frontend">
+                    <i class="devicon-typescript-plain text-lg text-slate-900 group-hover:scale-110 transition-transform"></i>
+                    <span>TypeScript</span>
+                </div>
+
+                <div class="tech-pill glass-card px-4 py-2.5 rounded-full flex items-center gap-2.5 text-xs sm:text-sm font-medium text-slate-800 hover:border-slate-400 hover:shadow-md hover:-translate-y-0.5 transition-all cursor-default select-none group" data-category="frontend">
+                    <i class="devicon-react-original text-lg text-slate-900 group-hover:scale-110 transition-transform"></i>
+                    <span>React</span>
+                </div>
+
+                <div class="tech-pill glass-card px-4 py-2.5 rounded-full flex items-center gap-2.5 text-xs sm:text-sm font-medium text-slate-800 hover:border-slate-400 hover:shadow-md hover:-translate-y-0.5 transition-all cursor-default select-none group" data-category="frontend">
+                    <i class="devicon-astro-plain text-lg text-slate-900 group-hover:scale-110 transition-transform"></i>
+                    <span>Astro</span>
+                </div>
+
+                <div class="tech-pill glass-card px-4 py-2.5 rounded-full flex items-center gap-2.5 text-xs sm:text-sm font-medium text-slate-800 hover:border-slate-400 hover:shadow-md hover:-translate-y-0.5 transition-all cursor-default select-none group" data-category="frontend">
+                    <i class="devicon-tailwindcss-plain text-lg text-slate-900 group-hover:scale-110 transition-transform"></i>
+                    <span>Tailwind CSS</span>
+                </div>
+
+                <div class="tech-pill glass-card px-4 py-2.5 rounded-full flex items-center gap-2.5 text-xs sm:text-sm font-medium text-slate-800 hover:border-slate-400 hover:shadow-md hover:-translate-y-0.5 transition-all cursor-default select-none group" data-category="frontend">
+                    <i class="devicon-sass-original text-lg text-slate-900 group-hover:scale-110 transition-transform"></i>
+                    <span>Sass / SCSS</span>
+                </div>
+
+                <!-- Backend Pills -->
+                <div class="tech-pill glass-card px-4 py-2.5 rounded-full flex items-center gap-2.5 text-xs sm:text-sm font-medium text-slate-800 hover:border-slate-400 hover:shadow-md hover:-translate-y-0.5 transition-all cursor-default select-none group" data-category="backend">
+                    <i class="devicon-nodejs-plain text-lg text-slate-900 group-hover:scale-110 transition-transform"></i>
+                    <span>Node.js</span>
+                </div>
+
+                <div class="tech-pill glass-card px-4 py-2.5 rounded-full flex items-center gap-2.5 text-xs sm:text-sm font-medium text-slate-800 hover:border-slate-400 hover:shadow-md hover:-translate-y-0.5 transition-all cursor-default select-none group" data-category="backend">
+                    <i class="devicon-express-original text-lg text-slate-900 group-hover:scale-110 transition-transform"></i>
+                    <span>Express.js</span>
+                </div>
+
+                <div class="tech-pill glass-card px-4 py-2.5 rounded-full flex items-center gap-2.5 text-xs sm:text-sm font-medium text-slate-800 hover:border-slate-400 hover:shadow-md hover:-translate-y-0.5 transition-all cursor-default select-none group" data-category="backend">
+                    <i class="devicon-python-plain text-lg text-slate-900 group-hover:scale-110 transition-transform"></i>
+                    <span>Python</span>
+                </div>
+
+                <div class="tech-pill glass-card px-4 py-2.5 rounded-full flex items-center gap-2.5 text-xs sm:text-sm font-medium text-slate-800 hover:border-slate-400 hover:shadow-md hover:-translate-y-0.5 transition-all cursor-default select-none group" data-category="backend">
+                    <i class="devicon-csharp-plain text-lg text-slate-900 group-hover:scale-110 transition-transform"></i>
+                    <span>C#</span>
+                </div>
+
+                <div class="tech-pill glass-card px-4 py-2.5 rounded-full flex items-center gap-2.5 text-xs sm:text-sm font-medium text-slate-800 hover:border-slate-400 hover:shadow-md hover:-translate-y-0.5 transition-all cursor-default select-none group" data-category="backend">
+                    <i class="devicon-go-plain text-lg text-slate-900 group-hover:scale-110 transition-transform"></i>
+                    <span>Go</span>
+                </div>
+
+                <div class="tech-pill glass-card px-4 py-2.5 rounded-full flex items-center gap-2.5 text-xs sm:text-sm font-medium text-slate-800 hover:border-slate-400 hover:shadow-md hover:-translate-y-0.5 transition-all cursor-default select-none group" data-category="backend">
+                    <i class="fa-brands fa-windows text-lg text-slate-900 group-hover:scale-110 transition-transform"></i>
+                    <span>C# Windows Forms</span>
+                </div>
+
+                <!-- Database Pills -->
+                <div class="tech-pill glass-card px-4 py-2.5 rounded-full flex items-center gap-2.5 text-xs sm:text-sm font-medium text-slate-800 hover:border-slate-400 hover:shadow-md hover:-translate-y-0.5 transition-all cursor-default select-none group" data-category="database">
+                    <i class="devicon-postgresql-plain text-lg text-slate-900 group-hover:scale-110 transition-transform"></i>
+                    <span>PostgreSQL</span>
+                </div>
+
+                <div class="tech-pill glass-card px-4 py-2.5 rounded-full flex items-center gap-2.5 text-xs sm:text-sm font-medium text-slate-800 hover:border-slate-400 hover:shadow-md hover:-translate-y-0.5 transition-all cursor-default select-none group" data-category="database">
+                    <i class="devicon-mongodb-plain text-lg text-slate-900 group-hover:scale-110 transition-transform"></i>
+                    <span>MongoDB</span>
+                </div>
+
+                <div class="tech-pill glass-card px-4 py-2.5 rounded-full flex items-center gap-2.5 text-xs sm:text-sm font-medium text-slate-800 hover:border-slate-400 hover:shadow-md hover:-translate-y-0.5 transition-all cursor-default select-none group" data-category="database">
+                    <i class="devicon-mysql-plain text-lg text-slate-900 group-hover:scale-110 transition-transform"></i>
+                    <span>MySQL</span>
+                </div>
+
+                <div class="tech-pill glass-card px-4 py-2.5 rounded-full flex items-center gap-2.5 text-xs sm:text-sm font-medium text-slate-800 hover:border-slate-400 hover:shadow-md hover:-translate-y-0.5 transition-all cursor-default select-none group" data-category="database">
+                    <i class="devicon-microsoftsqlserver-plain text-lg text-slate-900 group-hover:scale-110 transition-transform"></i>
+                    <span>SQL Server</span>
+                </div>
+
+                <div class="tech-pill glass-card px-4 py-2.5 rounded-full flex items-center gap-2.5 text-xs sm:text-sm font-medium text-slate-800 hover:border-slate-400 hover:shadow-md hover:-translate-y-0.5 transition-all cursor-default select-none group" data-category="database">
+                    <i class="devicon-mariadb-plain text-lg text-slate-900 group-hover:scale-110 transition-transform"></i>
+                    <span>MariaDB</span>
+                </div>
+
+                <div class="tech-pill glass-card px-4 py-2.5 rounded-full flex items-center gap-2.5 text-xs sm:text-sm font-medium text-slate-800 hover:border-slate-400 hover:shadow-md hover:-translate-y-0.5 transition-all cursor-default select-none group" data-category="database">
+                    <i class="fa-solid fa-database text-lg text-slate-900 group-hover:scale-110 transition-transform"></i>
+                    <span>HeidiSQL</span>
+                </div>
+
+                <div class="tech-pill glass-card px-4 py-2.5 rounded-full flex items-center gap-2.5 text-xs sm:text-sm font-medium text-slate-800 hover:border-slate-400 hover:shadow-md hover:-translate-y-0.5 transition-all cursor-default select-none group" data-category="database">
+                    <i class="devicon-sqlite-plain text-lg text-slate-900 group-hover:scale-110 transition-transform"></i>
+                    <span>SQLite</span>
+                </div>
+
+                <!-- Tools Pills -->
+                <div class="tech-pill glass-card px-4 py-2.5 rounded-full flex items-center gap-2.5 text-xs sm:text-sm font-medium text-slate-800 hover:border-slate-400 hover:shadow-md hover:-translate-y-0.5 transition-all cursor-default select-none group" data-category="tools">
+                    <i class="devicon-git-plain text-lg text-slate-900 group-hover:scale-110 transition-transform"></i>
+                    <span>Git / GitHub</span>
+                </div>
+
+                <div class="tech-pill glass-card px-4 py-2.5 rounded-full flex items-center gap-2.5 text-xs sm:text-sm font-medium text-slate-800 hover:border-slate-400 hover:shadow-md hover:-translate-y-0.5 transition-all cursor-default select-none group" data-category="tools">
+                    <i class="devicon-postman-plain text-lg text-slate-900 group-hover:scale-110 transition-transform"></i>
+                    <span>Postman</span>
+                </div>
+
+                <div class="tech-pill glass-card px-4 py-2.5 rounded-full flex items-center gap-2.5 text-xs sm:text-sm font-medium text-slate-800 hover:border-slate-400 hover:shadow-md hover:-translate-y-0.5 transition-all cursor-default select-none group" data-category="tools">
+                    <i class="devicon-trello-plain text-lg text-slate-900 group-hover:scale-110 transition-transform"></i>
+                    <span>Trello</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+<!-- CONTACTOS -->
+ <!-- ==========================================
+         SECCIÓN CONTACTOS
+         ========================================== -->
+   <!-- ==========================================
+         SECCIÓN CONTACTOS
+         ========================================== -->
+    <!-- //SOFF: pt-2 sm:pt-4 md:pt-6 controla el espaciado pequeñito arriba de esta sección -->
+    <!-- <section id="contacto" class="font-sans antialiased text-slate-800 bg-contacto-liso min-h-screen flex flex-col items-center justify-start pt-2 sm:pt-4 md:pt-6 pb-8 px-4 selection:bg-pink-300 selection:text-pink-900"> -->
+    <!-- //SOFF: pt-2 sm:pt-4 md:pt-6 controla el espaciado pequeñito arriba de esta sección -->
+    <section id="contacto" class="font-sans antialiased text-slate-800 bg-contacto-liso flex flex-col items-center justify-start pt-2 sm:pt-4 md:pt-6 pb-8 px-4 selection:bg-pink-300 selection:text-pink-900">
+        <div class="w-full max-w-md sm:max-w-lg md:max-w-xl flex flex-col items-center">
+            
+            <h1 class="font-nicone text-5xl sm:text-6xl md:text-7xl text-slate-800 text-center leading-tight tracking-wide drop-shadow-sm mb-3 sm:mb-4 md:mb-5 selection:bg-pink-200">
+                Contactos
+            </h1>
+
+            <div class="contacto-glass-card rounded-3xl p-6 sm:p-8 md:p-10 shadow-2xl relative overflow-hidden border border-white/80 w-full">
+                
+                <p class="text-xs sm:text-sm text-slate-700 text-center font-medium leading-relaxed mb-6 bg-pink-50/70 p-3.5 sm:p-4 rounded-2xl border border-pink-200/80 shadow-sm">
+                    ¿Tienes una idea, proyecto o emprendimiento en mente? Escríbeme con total confianza y contame lo que necesites, ¡estoy para ayudarte!
+                </p>
+
+                <form id="contactForm" onsubmit="handleSend(event)" class="space-y-5 sm:space-y-6">
+                    
+                    <div>
+                        <label for="userName" class="block text-xs sm:text-sm font-bold text-slate-800 uppercase tracking-wider mb-2 flex items-center gap-2">
+                            <i data-lucide="user" class="w-4 h-4 text-pink-600"></i> Nombre
+                        </label>
+                        <div class="relative">
+                            <input 
+                                type="text" 
+                                id="userName" 
+                                name="userName" 
+                                required
+                                placeholder="Ingresa tu nombre" 
+                                class="w-full px-4 py-3.5 pl-11 rounded-2xl border border-slate-200 text-slate-900 placeholder:text-slate-400 font-medium text-sm sm:text-base contacto-glass-input focus:outline-none focus:border-pink-500 shadow-sm"
+                            />
+                            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                                <i data-lucide="user-check" class="w-5 h-5 text-pink-500"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <label for="userQuery" class="text-xs sm:text-sm font-bold text-slate-800 uppercase tracking-wider flex items-center gap-2">
+                                <i data-lucide="help-circle" class="w-4 h-4 text-pink-600"></i> Consulta
+                            </label>
+                            <span class="text-xs font-semibold text-slate-400 italic">(Opcional)</span>
+                        </div>
+                        <div class="relative">
+                            <textarea 
+                                id="userQuery" 
+                                name="userQuery" 
+                                rows="4" 
+                                placeholder="Escribe aquí tu consulta si deseas (opcional)..." 
+                                class="w-full px-4 py-3.5 pl-11 rounded-2xl border border-slate-200 text-slate-900 placeholder:text-slate-400 font-medium text-sm sm:text-base contacto-glass-input focus:outline-none focus:border-pink-500 shadow-sm resize-none"
+                            ></textarea>
+                            <div class="absolute top-3.5 left-0 pl-3.5 pointer-events-none text-slate-400">
+                                <i data-lucide="message-square-text" class="w-5 h-5 text-pink-500"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="successMsg" class="hidden text-emerald-600 text-sm font-bold flex items-center justify-center gap-2 pt-2">
+                        <i data-lucide="check-circle-2" class="w-5 h-5"></i> Mensaje enviado
+                    </div>
+
+                   <!-- Botón Enviar -->
+                    <div class="pt-1">
+                        <button 
+                            type="submit" 
+                            id="submitBtn"
+                            class="w-full py-3.5 sm:py-4 px-6 bg-[#ffd1df] hover:brightness-95 text-slate-800 font-bold text-base sm:text-lg rounded-2xl shadow-lg hover:shadow-pink-500/30 transform active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 group cursor-pointer"
+                        >
+                            <i data-lucide="send" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                            <span>Enviar</span>
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Seccion footer -->
+     <!-- ================================================================= -->
+    <!-- FOOTER ROSA PASTEL ELEGANTE (CÓDIGO COMPACTO Y RESPONSIVE) -->
+    <!-- ================================================================= -->
+    <footer class="w-full bg-[#ffd1df] border-t border-pink-200 text-pink-950 py-4 px-4 transition-colors">
+        <div class="max-w-5xl mx-auto flex flex-col items-center gap-3">
+            
+            <!-- Fila Superior: Iconos (Gmail, GitHub) y Botón Descargar CV -->
+            <div class="flex items-center justify-center gap-3 sm:gap-4 flex-wrap">
+                
+                <!-- Icono Gmail -->
+                <a href="sofiaguirree18@gmail.com" 
+                   title="Enviar mail por Gmail"
+                   aria-label="Enviar mail por Gmail"
+                   class="w-9 h-9 flex items-center justify-center rounded-full bg-white text-pink-600 border border-pink-200 shadow-sm hover:bg-pink-50 hover:text-pink-700 hover:scale-105 active:scale-95 transition-all duration-200 text-base focus:outline-none focus:ring-2 focus:ring-pink-400">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+
+                <!-- Icono GitHub -->
+                <a href="https://github.com/tuusuario" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   title="Perfil de GitHub"
+                   aria-label="Visitar perfil de GitHub"
+                   class="w-9 h-9 flex items-center justify-center rounded-full bg-white text-slate-800 border border-pink-200 shadow-sm hover:bg-pink-50 hover:text-black hover:scale-105 active:scale-95 transition-all duration-200 text-base focus:outline-none focus:ring-2 focus:ring-pink-400">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+
+                <!-- Separador sutil visible en pantallas medianas/grandes -->
+                <div class="hidden sm:block w-px h-4 bg-pink-300/60 mx-1"></div>
+
+                <!-- Botón Descargar CV (Preparado para tu archivo curriculum.pdf) -->
+                <a href="curriculum.pdf" 
+                   download="curriculum.pdf" 
+                   title="Descargar Currículum Vitae en PDF"
+                   class="inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold text-white bg-pink-600 hover:bg-pink-700 active:bg-pink-800 rounded-full shadow-sm hover:shadow transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-pink-400 focus:ring-offset-1 focus:ring-offset-pink-100">
+                    <i class="fa-solid fa-file-arrow-down text-sm"></i>
+                    <span>Descargar CV</span>
+                </a>
+
+            </div>
+
+            <!-- Fila Inferior: Derechos Reservados -->
+            <div class="text-center text-xs font-medium text-pink-900/80 pt-0.5">
+                <p>© 2026 Todos los derechos reservados</p>
+            </div>
+
+        </div>
+    </footer>
+    <!-- ================================================================= -->
+    <!-- FIN DEL FOOTER ROSA PASTEL -->
+    <!-- ================================================================= -->
+    <!-- ==========================================
+         SCRIPT SEPARADO
+         ========================================== -->
+    <!-- <script src="main.js" defer></script> -->
+    <script src="menu.js" defer></script>
+<script src="hero.js" defer></script>
+<script src="proyecto2.js" defer></script>
+<script src="educacion2.js" defer></script>
+<script src="tecnologias.js" defer></script>
+<script src="contactos.js" defer></script>
 </body>
 </html>
