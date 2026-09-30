@@ -11,7 +11,7 @@ const projects = [
     id: 2,
     title: "Web Currículums",
     category: "Página Web",
-    image: "proyectoSo3.jpg", // Le agregué la doble barra // que faltaba
+    image: "proyectoSo4.jpg", // Le agregué la doble barra // que faltaba
     description: "Crea tu currículum totalmente gratis. Completas un formulario con tus datos, podés icluir o no tu foto. Se generarán dos curriculums, elegís el que más te guste, igualmente la página te recomendará el mejor para vos. Podrás camabiar de color y descargar totalmente gratis.",
     link: "https://fofi09.github.io/generadorCurriculums" // curriculum
   },
