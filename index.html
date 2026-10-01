@@ -1004,9 +1004,11 @@
            SCROLLBAR VISIBLE EN EDUCACIÓN SOLO PARA PC Y TELE
            ======================================================== */
    
-        @media (min-width: 1024px) and (hover: hover) {
+   /* ========================================================
+           SCROLLBAR VISIBLE (SOLO PARA PANTALLAS CON MOUSE: PC Y TV)
+           ======================================================== */
+        @media (min-width: 1441px) and (hover: hover) {
             .edu-carousel {
-                /* Forzamos que la pista de la barra se dibuje SÍ O SÍ */
                 overflow-x: scroll !important; 
                 scrollbar-width: thin !important; 
                 scrollbar-color: rgba(156, 163, 175, 0.7) transparent !important;
@@ -1014,13 +1016,19 @@
             }
             .edu-carousel::-webkit-scrollbar { 
                 display: block !important; 
+                visibility: visible !important;
+                -webkit-appearance: scrollbar !important;
                 height: 12px !important; 
             }
             .edu-carousel::-webkit-scrollbar-track {
+                display: block !important;
+                visibility: visible !important;
                 background: rgba(0,0,0,0.05) !important;
                 border-radius: 9999px !important;
             }
             .edu-carousel::-webkit-scrollbar-thumb {
+                display: block !important;
+                visibility: visible !important;
                 background: rgba(156, 163, 175, 0.6) !important; 
                 border-radius: 9999px !important;
             }
