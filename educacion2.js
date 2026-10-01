@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
 
 
-    // --- Lógica del Carrusel y la Línea Azul ---
+    // --- Lógica del Carrusel y la Línea  ---
     const carouselContainer = document.querySelector('.edu-carousel');
     const sidebarElement = document.querySelector('.edu-sidebar');
     const blueLineElement = document.querySelector('.edu-blue-line');

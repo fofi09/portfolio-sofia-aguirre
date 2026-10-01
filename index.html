@@ -1003,34 +1003,31 @@
         /* ========================================================
            SCROLLBAR VISIBLE EN EDUCACIÓN SOLO PARA PC Y TELE
            ======================================================== */
+      /* ========================================================
+           SCROLLBAR VISIBLE EN EDUCACIÓN SOLO PARA PC Y TELE
+           ======================================================== */
         @media (min-width: 1441px) {
             .edu-carousel {
-                /* Restauramos el scroll para Firefox */
-                scrollbar-width: thin; 
-                scrollbar-color: rgba(156, 163, 175, 0.5) rgba(0,0,0,0.05);
-                
-                /* //SOFF: le damos un pelín más de padding abajo para que la barra no pise tus tarjetas */
-                padding-bottom: 25px; 
+                scrollbar-width: thin !important; 
+                scrollbar-color: rgba(156, 163, 175, 0.5) rgba(0,0,0,0.05) !important;
+                padding-bottom: 25px !important; 
             }
-            
-            /* Restauramos el scroll para Chrome, Edge y Safari */
             .edu-carousel::-webkit-scrollbar { 
-                display: block; 
-                height: 10px; /* Grosor de la barrita horizontal */
+                display: block !important; 
+                height: 10px !important; 
             }
             .edu-carousel::-webkit-scrollbar-track {
-                background: rgba(0,0,0,0.05);
-                border-radius: 9999px;
+                background: rgba(0,0,0,0.05) !important;
+                border-radius: 9999px !important;
             }
             .edu-carousel::-webkit-scrollbar-thumb {
-                background: rgba(156, 163, 175, 0.5); /* El gris semi-transparente de tus otras barras */
-                border-radius: 9999px;
+                background: rgba(156, 163, 175, 0.5) !important; 
+                border-radius: 9999px !important;
             }
             .edu-carousel::-webkit-scrollbar-thumb:hover {
-                background: rgba(156, 163, 175, 0.8);
+                background: rgba(156, 163, 175, 0.8) !important;
             }
         }
-
         /* 2 */
         /* ========================================================
             SEPARADOR
